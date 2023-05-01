@@ -1,0 +1,47 @@
+@use '../layout/_grid' as *
+@use '../helpers/_variables' as *
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  font-family: 'Rubik', sans-serif
+  border: none
+  outline: none
+  background: none
+  text-decoration: none
+  list-style: none
+
+body
+  background-color: #F7F7F7
+
+section
+  padding: 60px 0
+
+  &.bg-color
+    background-color: #ffffff
+
+.wrapper
+  max-width: 1300px
+  padding: 0 1rem
+  margin: 0 auto
+
+.swiper-button-next,
+.swiper-button-prev
+  left: 98%
+  transform: translateX(-50%)
+  height: 30px !important
+  width: 30px !important
+  border-radius: 50%
+  background-color: #d6d6d6
+  border: 2px solid #ffffff
+  @include flex($justify: center)
+  z-index: 10
+
+  &::after
+    font-size: 12px
+    color: $dark
+
+.swiper-button-prev
+  left: 2%

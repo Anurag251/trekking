@@ -1,0 +1,37 @@
+@use '../helpers/_variables' as *
+@use '../layout/_grid' as *
+@use '../helpers/_mixin' as *
+
+.custom-button
+  @include customButton($bdrc: $light, $color: $light)
+  cursor: pointer
+
+  &:hover
+    background-color: $light
+    color: $dark
+
+  &.unique
+    border: none
+    text-decoration: underline
+    position: relative
+    padding-left: 20px
+
+    &:hover
+      color: $light !important
+      background-color: transparent !important
+
+      &::after
+        height: 30px
+        width: 100%
+
+    &::after
+      content: ''
+      position: absolute
+      left: 0
+      top: 50%
+      transform: translateY(-50%)
+      height: 10px
+      width: 10px
+      border: 1px solid $light
+      border-radius: 50px
+      @include fastTrans()

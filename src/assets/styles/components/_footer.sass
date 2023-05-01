@@ -1,0 +1,61 @@
+@use '../helpers/_variables' as *
+@use '../layout/_grid' as *
+@use '../helpers/_mixin' as *
+
+footer
+  @include bgImage()
+  padding: 60px 0 0
+
+  .wrapper
+    .footer-content
+      @include grid($columns: 1.2fr 1fr .5fr 1fr)
+
+      .logo
+        text-transform: uppercase
+        font-size: 30px
+
+      .footer-title
+        color: $light
+        font-size: 18px
+        margin-bottom: 1rem
+
+      p
+        margin: 1rem 0
+        font-size: 14px
+        line-height: 1.4rem
+        color: $light
+
+      .social-links
+        @include flex($justify: flex-start)
+        gap: 10px
+
+        button
+          height: 35px
+          width: 35px
+          border-radius: 50%
+          background-color: $dark
+          color: $light
+          font-size: 14px
+          @include flex($justify: center)
+          text-align: center
+
+      .item
+        ul
+          li
+            color: $light
+            margin-bottom: 15px
+            font-size: 14px
+            color: rgba($light, .8)
+
+          &.footer-contact-list li
+            @include flex($justify: flex-start)
+            align-items: flex-start
+            gap: 5px
+
+    .copyright
+      font-size: 16px
+      text-align: center
+      margin-top: 3rem
+      padding: 1.5rem 0
+      border-top: 1px solid rgba($light, .3)
+      color: $light

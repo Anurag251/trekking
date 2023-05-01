@@ -1,0 +1,71 @@
+@use '../helpers/_variables' as *
+@use '../layout/_grid' as *
+
+header
+  position: sticky
+  top: 0
+  left: 0
+  color: $light
+  width: 100%
+  z-index: 10
+
+  &.other-page
+    position: sticky
+    top: 0
+    background-color: rgba($light, .7)
+    backdrop-filter: blur(10px)
+
+    .wrapper
+      .logo a, nav ul li button, .social-links ul li
+        color: $dark
+
+  .header-top
+    height: 50px
+    width: 100%
+    background-color: $pri
+
+    .wrapper
+      height: 100%
+      width: 100%
+
+    ul
+      height: 100%
+      @include flex($justify: flex-end)
+
+      li
+        font-size: 12px
+        font-weight: 600
+        margin-left: 1.5rem
+
+  .nav-bar
+    height: 60px
+    background-color: $sec
+
+    .wrapper
+      height: 100%
+      width: 100%
+      @include flex($justify: space-between)
+
+    .logo
+      font-size: 20px
+      font-weight: 400
+      color: $light
+
+    .nav-links
+      @include flex($justify: flex-end)
+      gap: 10px
+
+      li
+        button
+          padding: 0 1rem
+          color: $light
+          cursor: pointer
+          font-size: 16px
+
+    .social-links
+      ul
+        @include flex($justify: flex-end)
+
+        li
+          padding: .3rem 1rem
+          color: $light
