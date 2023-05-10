@@ -13,7 +13,7 @@ const TopDestinationsComponent = () => {
   return (
     <div className="top-destinations">
       <SectionTitleComponent title="Packages">
-        Top destinations
+        Create Your Custom Made Trip to Nepal
       </SectionTitleComponent>
 
       <Swiper
@@ -66,6 +66,10 @@ const TopDestinationsComponent = () => {
           <CardComponent />
         </SwiperSlide>
       </Swiper>
+
+      <div className="button-area">
+        <button className="view-all-button">View All</button>
+      </div>
     </div>
   );
 };

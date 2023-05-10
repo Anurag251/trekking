@@ -1,5 +1,6 @@
 @use '../layout/_grid' as *
 @use '../helpers/_variables' as *
+@use '../helpers/_mixin' as *
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
 
 *
@@ -45,3 +46,25 @@ section
 
 .swiper-button-prev
   left: 2%
+
+.button-area
+  @include flex($justify: center)
+  width: 100%
+
+  .view-all-button
+    margin-top: 2rem
+    padding: .5rem 1.5rem
+    border-radius: 4px
+    box-shadow: 0 0 0 3em $btn inset
+    font-size: 14px
+    letter-spacing: 2px
+    font-weight: 400
+    color: $light
+    text-transform: uppercase
+    cursor: pointer
+    border: 1.5px solid $btn
+    @include trans()
+
+    &:hover
+      box-shadow: 0 0 0 0 $btn inset
+      color: $btn

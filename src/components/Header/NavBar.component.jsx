@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 
+import logoImage from "../../assets/images/logo.png";
+
 const NavBarComponent = () => {
   return (
     <nav className="nav-bar">
       <div className="wrapper">
-        <div className="logo">
-          <h1>LOGO</h1>
-        </div>
+        <Link to="/">
+          <div className="logo">
+            <img src={logoImage} alt="logo" />
+          </div>
+        </Link>
 
         <ul className="nav-links">
           <li>
@@ -23,19 +27,13 @@ const NavBarComponent = () => {
 
           <li>
             <Link to="/">
-              <button className="link-button">Destination Guides</button>
+              <button className="link-button">Destination</button>
             </Link>
           </li>
 
           <li>
             <Link to="/">
-              <button className="link-button">Cabs</button>
-            </Link>
-          </li>
-
-          <li>
-            <Link to="/">
-              <button className="link-button">Our Hotels</button>
+              <button className="link-button">Plan Your Trip</button>
             </Link>
           </li>
 

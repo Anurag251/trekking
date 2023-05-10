@@ -12,16 +12,16 @@ const TestimonialsComponent = () => {
   return (
     <div className="testimonials">
       <SectionTitleComponent title="Testimonials">
-        OUR HAPPY CLIENTS
+        Testimonials
       </SectionTitleComponent>
 
       <Swiper
         slidesPerView={1}
         speed={1000}
-        autoplay={{
-          delay: 4500,
-          disableOnInteraction: false,
-        }}
+        // autoplay={{
+        //   delay: 4500,
+        //   disableOnInteraction: false,
+        // }}
         navigation={true}
         modules={[Autoplay, Navigation]}
         spaceBetween={10}
@@ -34,19 +34,11 @@ const TestimonialsComponent = () => {
         <SwiperSlide>
           <TestimonialsCardComponent />
         </SwiperSlide>
-
-        <SwiperSlide>
-          <TestimonialsCardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <TestimonialsCardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <TestimonialsCardComponent />
-        </SwiperSlide>
       </Swiper>
+
+      <div className="button-area">
+        <button className="view-all-button">View All</button>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,61 @@
+@use '../helpers/_mixin' as *
+@use '../layout/_grid' as *
+@use '../helpers/_variables' as *
+
+.package-descriptions
+  width: 80%
+
+  .package-features
+    border-bottom: 1px solid rgba($dark, .3)
+    padding-bottom: 2rem
+
+    .list
+      @include flex($justify: space-between)
+
+      .item
+        @include flex($justify: flex-start)
+        gap: 10px
+
+        .icon
+          i
+            font-size: 30px
+            color: $pri
+
+        .content
+          .name
+            font-size: 14px
+            font-weight: 500
+            color: $pri
+            margin-bottom: .3rem
+
+          p
+            font-size: 12px
+
+  .package-description-list
+    .list
+      .item
+        padding: 1rem 0
+        border-bottom: 1px solid rgba($dark, .3)
+
+        .title
+          @include flex($justify: space-between)
+          color: $pri
+
+          h4
+            font-size: 20px
+            font-weight: 500
+
+        .inner-content
+          margin-top: 2rem
+
+          .content-title
+            font-size: 16px
+            font-weight: 600
+            margin-bottom: 1rem
+
+          ul
+            padding-left: 1rem
+            
+            li
+              margin-bottom: .5rem
+              list-style: disc

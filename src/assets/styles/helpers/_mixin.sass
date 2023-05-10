@@ -1,3 +1,5 @@
+@use '../layout/_grid' as *
+
 @mixin bgImage()
   background-position: center
   background-size: cover
@@ -31,7 +33,17 @@
 @mixin gradient($deg)
   background: linear-gradient($deg, $pri, $pri)
 
-@mixin customButton($bdrc, $color)
-  padding: .5rem 1rem
-  border: 1px solid $bdrc
+@mixin customButton($bgcolor, $color)
+  @include flex($justify: center)
+  padding: .5rem 1.5rem
+  border-radius: 4px
+  box-shadow: 0 0 0 3em $bgcolor inset
+  font-size: 14px
   color: $color
+  cursor: pointer
+  border: 1.5px solid $bgcolor
+  @include trans()
+
+  &:hover
+    box-shadow: 0 0 0 0 $bgcolor inset
+    color: $bgcolor

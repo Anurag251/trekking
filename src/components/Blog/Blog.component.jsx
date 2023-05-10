@@ -14,6 +14,10 @@ const BlogComponent = () => {
         <CardComponent />
         <CardComponent />
       </div>
+
+      <div className="button-area">
+        <button className="view-all-button">View All</button>
+      </div>
     </div>
   );
 };

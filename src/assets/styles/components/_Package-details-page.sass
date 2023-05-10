@@ -1,0 +1,140 @@
+@use '../helpers/_mixin' as *
+@use '../layout/_grid' as *
+@use '../helpers/_variables' as *
+
+.Package-details-page
+  margin: 60px 0
+
+  .title-area
+    @include flex($justify: space-between)
+    margin-bottom: 1rem
+
+    .Package-details-title
+      font-size: 34px
+      font-weight: 500
+      color: $sec
+
+  .package-detail
+    .package-gallery
+      margin-bottom: 2rem
+
+      .image-area
+        height: 300px
+        width: 100%
+
+        img
+          @include image()
+
+    .package-detail-layout
+      @include flex($justify: stretch)
+      align-items: flex-start
+      gap: 20px
+
+      .package-booking-details
+        width: 20%
+
+        .item
+          margin-bottom: 1rem
+          border: 1px solid rgba($dark, .3)
+
+        .package-price
+          padding: 1rem
+          background-color: $pri
+          color: $light
+
+        .date
+          padding: 1rem
+          border-bottom: 1px solid rgba($dark, .3)
+
+        .group
+          padding: 1rem
+          border-bottom: 1px solid rgba($dark, .3)
+          @include flex($justify: space-between)
+
+          .choose-package
+            .name
+              font-size: 16px
+              font-weight: 500
+              margin-bottom: 5px
+
+            p
+              font-size: 14px
+
+          .button-group
+            @include flex($justify: flex-end)
+            gap: 20px
+
+            button
+              height: 30px
+              width: 30px
+              background-color: rgba($dark, .1)
+              border-radius: 4px
+              font-size: 20px
+              font-weight: 300
+              cursor: pointer
+
+              &:hover
+                background-color: rgba($dark, .2)
+
+        .book-now-button
+          padding: .5rem
+
+          button
+            padding: .5rem
+            width: 100%
+            color: $light
+            background-color: $sec
+            border-radius: 4px
+            cursor: pointer
+
+        .info
+          padding: .3rem
+          text-align: center
+          font-size: 14px
+
+        .title
+          font-size: 20px
+          font-weight: 500
+          color: $pri
+          margin-bottom: 1rem
+
+        .inner
+          padding: 1rem
+
+          .owner
+            @include flex($justify: flex-start)
+            gap: 10px
+
+            .owner-image
+              height: 50px
+              width: 60px
+              object-fit: cover
+
+            .name
+              font-size: 18px
+              font-weight: 500
+              margin-bottom: 3px
+
+          .question
+            padding: .5rem
+            width: 100%
+            color: $light
+            background-color: $sec
+            border-radius: 4px
+            cursor: pointer
+            margin-top: 1rem
+
+        .package-informaitons
+          padding: 1rem
+
+          ul
+            li
+              margin-bottom: 1rem
+
+              span
+                font-size: 14px
+                font-weight: 500
+                margin-bottom: .5px
+
+              p
+                font-size: 14px

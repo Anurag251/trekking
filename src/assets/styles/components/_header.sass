@@ -1,5 +1,6 @@
 @use '../helpers/_variables' as *
 @use '../layout/_grid' as *
+@use '../helpers/_mixin' as *
 
 header
   position: sticky
@@ -39,7 +40,7 @@ header
 
   .nav-bar
     height: 60px
-    background-color: $sec
+    background-color: $pri
 
     .wrapper
       height: 100%
@@ -47,9 +48,18 @@ header
       @include flex($justify: space-between)
 
     .logo
-      font-size: 20px
-      font-weight: 400
-      color: $light
+      height: 80px
+      width: 80px
+      border-radius: 50%
+      position: relative
+
+      img
+        position: absolute
+        left: 50%
+        top: 15%
+        transform: translate(-50%, -50%)
+        @include image()
+        object-fit: contain
 
     .nav-links
       @include flex($justify: flex-end)

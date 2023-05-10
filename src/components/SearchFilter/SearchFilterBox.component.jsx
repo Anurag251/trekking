@@ -11,15 +11,31 @@ const SearchFilterBoxComponent = () => {
         <div className="icon">
           <IconsMapMarker />
         </div>
-        <input type="text" placeholder="Type a Destination" />
+
+        <select name="" id="">
+          <option value="">Type a Destination</option>
+          <option value="">Bhutan</option>
+          <option value="">Tibet</option>
+          <option value="">India</option>
+          <option value="">Thailand</option>
+          <option value="">Other</option>
+          <option value="">country</option>
+        </select>
       </div>
 
       <div className="group">
         <div className="icon">
           <IconsSandTime />
         </div>
+         
 
-        <input type="text" placeholder="Number of days" />
+        <select name="" id="">
+          <option value="">Number of days</option>
+          <option value="">5-7 days</option>
+          <option value="">7-10 days</option>
+          <option value="">10-16 days</option>
+          <option value="">16-30 days</option>
+        </select>
       </div>
 
       <div className="group">

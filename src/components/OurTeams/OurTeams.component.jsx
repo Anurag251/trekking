@@ -6,15 +6,24 @@ import "swiper/css/navigation";
 
 import { Autoplay, Navigation } from "swiper";
 
-import CardComponent from "../Cards/Card.component";
+import TeamsCardComponent from "../Cards/TeamsCard.component";
 import SectionTitleComponent from "../Titles/SectionTitle.component";
 
-const RecommendedForYouComponent = () => {
+const OurTeamsComponent = () => {
   return (
-    <div className="recommended-for-you">
-      <SectionTitleComponent title="Packages">
-        Get inspired for your next trip!
+    <div className="our-teams">
+      <SectionTitleComponent title="Teams">
+        Meet our Local Travel Specialists
       </SectionTitleComponent>
+
+      {/* <div className="teams-list">
+        <TeamsCardComponent />
+        <TeamsCardComponent />
+        <TeamsCardComponent />
+        <TeamsCardComponent />
+        <TeamsCardComponent />
+        <TeamsCardComponent />
+      </div> */}
 
       <Swiper
         slidesPerView={2}
@@ -35,7 +44,7 @@ const RecommendedForYouComponent = () => {
             spaceBetween: 10,
           },
           1024: {
-            slidesPerView: 5,
+            slidesPerView: 6,
             spaceBetween: 10,
           },
         }}
@@ -43,27 +52,31 @@ const RecommendedForYouComponent = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <CardComponent />
+          <TeamsCardComponent />
         </SwiperSlide>
 
         <SwiperSlide>
-          <CardComponent />
+          <TeamsCardComponent />
         </SwiperSlide>
 
         <SwiperSlide>
-          <CardComponent />
+          <TeamsCardComponent />
         </SwiperSlide>
 
         <SwiperSlide>
-          <CardComponent />
+          <TeamsCardComponent />
         </SwiperSlide>
 
         <SwiperSlide>
-          <CardComponent />
+          <TeamsCardComponent />
         </SwiperSlide>
 
         <SwiperSlide>
-          <CardComponent />
+          <TeamsCardComponent />
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <TeamsCardComponent />
         </SwiperSlide>
       </Swiper>
 
@@ -74,4 +87,4 @@ const RecommendedForYouComponent = () => {
   );
 };
 
-export default RecommendedForYouComponent;
+export default OurTeamsComponent;

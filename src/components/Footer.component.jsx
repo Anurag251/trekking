@@ -1,8 +1,13 @@
-import footerImage from "../assets/images/footerbg.jpg";
+import Government from "../assets/images/Government Logo.jpeg";
+import NTB from "../assets/images/NTB Logo.jpeg";
+import TAAN from "../assets/images/TAAN.png";
+import NMA from "../assets/images/NMA.png";
+
+import { Link } from "react-router-dom";
 
 const FooterComponent = () => {
   return (
-    <footer style={{ backgroundImage: `url(${footerImage})` }}>
+    <footer>
       <div className="wrapper">
         <div className="footer-content">
           <div className="item">
@@ -10,6 +15,13 @@ const FooterComponent = () => {
 
             <p>Mountain Go Trekking Nepal</p>
             <p>We are affiliated with: Government Logo, NTB Logo, TAAN, NMA</p>
+
+            <div className="logo-image-list">
+              <img src={Government} alt="Government Logo" />
+              <img src={NTB} alt="NTB Logo" />
+              <img src={TAAN} alt="TAAN Logo" />
+              <img src={NMA} alt="NMA Logo" />
+            </div>
 
             <h5>Connect with Us:</h5>
 
@@ -36,12 +48,24 @@ const FooterComponent = () => {
             <h4 className="footer-title">Our Activities</h4>
 
             <ul className="footer-activities-list">
-              <li>Tour Package</li>
-              <li>Trekking & Adventure</li>
-              <li>Peak Climbing</li>
-              <li>8000M Expedition</li>
-              <li>White Water Rafting</li>
-              <li>Top trending adventure</li>
+              <li>
+                <Link to="/packages">Holidays Package</Link>
+              </li>
+              <li>
+                <Link to="/packages">Trekking & Adventure</Link>
+              </li>
+              <li>
+                <Link to="/packages">Peak Climbing</Link>
+              </li>
+              <li>
+                <Link to="/packages">8000M Expedition</Link>
+              </li>
+              <li>
+                <Link to="/packages">White Water Rafting</Link>
+              </li>
+              <li>
+                <Link to="/packages">Top trending adventure</Link>
+              </li>
             </ul>
           </div>
 
@@ -53,7 +77,7 @@ const FooterComponent = () => {
               <li>Terms & Conditions</li>
               <li>Testimonials</li>
               <li>Contact us</li>
-              <li>Nepal Travels information</li>
+              <li>Travels information</li>
             </ul>
           </div>
 
@@ -68,13 +92,12 @@ const FooterComponent = () => {
 
               <li>
                 <i className="fas fa-phone"></i>
-                +977-01-5158446, 9849417708
+                +977-1-5158446 | 9841809067
               </li>
 
               <li>
                 <i className="fas fa-envelope"></i>
-                info@mountaingotrekkiong.com
-                <br /> mountaingotrekking@gmail.com
+                info@mountaingotrekking.com mountaingotrekking@gmail.com
               </li>
             </ul>
           </div>
