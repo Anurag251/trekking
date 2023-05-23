@@ -15,36 +15,127 @@
       color: $sec
 
   .package-detail
+    .PackageGalleryComponent
+      width: 65%
+
     .package-gallery
       margin-bottom: 2rem
 
+      .mySwiper2
+        margin-bottom: 10px
+
+        .swiper-slide
+          height: 100%
+          width: 100%
+
       .image-area
-        height: 300px
+        height: 400px
         width: 100%
 
         img
           @include image()
 
+      .mySwiper
+        .image-button
+          height: 130px
+          width: 100%
+
+          img
+            @include image()
+
     .package-detail-layout
-      @include flex($justify: stretch)
+      @include flex($justify: space-between)
       align-items: flex-start
       gap: 20px
 
       .package-booking-details
-        width: 20%
+        width: 35%
 
         .item
           margin-bottom: 1rem
           border: 1px solid rgba($dark, .3)
 
+          &.booking-form
+            .from-area
+              padding: .3rem 1rem 1rem
+
+              .form-input-group
+                @include grid($columns: repeat(2, 1fr))
+                grid-gap: 10px
+
+              .package-info
+                padding: 0
+
+            .form-label
+              font-size: 10px
+              font-weight: 700
+              text-transform: uppercase
+              letter-spacing: 2px
+              color: rgba($dark, .9)
+
+              span
+                font-size: 8px
+
+            .package-price
+              margin-bottom: .6rem
+
+            .package-info
+              border-bottom: none
+
         .package-price
-          padding: 1rem
           background-color: $pri
           color: $light
 
-        .date
+        .package-head
+          @include flex($justify: space-between)
+          background-color: $pri
+          color: $light
+          padding: 1rem
+
+          .title
+            color: $light
+            margin: 0
+            font-size: 16px
+
+        .form-input
+          border: 1px solid rgba($dark, .5)
+          border-radius: 4px
+          padding: .4rem
+          width: 100%
+          margin-top: .2rem
+          font-size: 15px
+          margin-bottom: 1rem
+
+        .package-info
           padding: 1rem
           border-bottom: 1px solid rgba($dark, .3)
+
+          .title
+            font-size: 12px
+            text-transform: uppercase
+            font-weight: 600
+            letter-spacing: 2px
+            color: rgba($dark, .6)
+            margin-bottom: .7rem
+
+          .package-price-area
+            font-size: 20px
+            font-weight: 600
+            color: #A00000
+
+          .value
+            @include flex($justify: flex-start)
+            gap: 10px
+
+            button
+              padding: .4rem
+              border-radius: 10px
+              border: 1px solid $btn
+              cursor: pointer
+
+              &.active
+                background-color: $btn
+                color: $light
 
         .group
           padding: 1rem
@@ -80,12 +171,28 @@
           padding: .5rem
 
           button
-            padding: .5rem
+            @include customButton($bgcolor: $sec, $color: $light)
             width: 100%
-            color: $light
-            background-color: $sec
-            border-radius: 4px
-            cursor: pointer
+            @include flex($justify: center)
+            gap: 10px
+
+            &.active
+              pointer-events: none
+              opacity: .8
+
+              &::before
+                display: block
+
+            &::before
+              content: ''
+              height: 15px
+              width: 15px
+              border: 2px solid transparent
+              border-top: 2px solid $light
+              border-bottom: 2px solid $light
+              border-radius: 50%
+              animation: loadingBtn .8s infinite cubic-bezier(0.77, 0, 0.175, 1)
+              display: none
 
         .info
           padding: .3rem

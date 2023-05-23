@@ -8,8 +8,12 @@ import { Autoplay, Navigation } from "swiper";
 
 import CardComponent from "../Cards/Card.component";
 import SectionTitleComponent from "../Titles/SectionTitle.component";
+import { AllDataContext } from "../../context/AllData.context";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 const RecommendedForYouComponent = () => {
+  const { countryDatas } = useContext(AllDataContext);
   return (
     <div className="recommended-for-you">
       <SectionTitleComponent title="Packages">
@@ -18,6 +22,7 @@ const RecommendedForYouComponent = () => {
 
       <Swiper
         slidesPerView={2}
+        spaceBetween={10}
         speed={1000}
         autoplay={{
           delay: 4500,
@@ -39,36 +44,21 @@ const RecommendedForYouComponent = () => {
             spaceBetween: 10,
           },
         }}
-        spaceBetween={20}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <CardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <CardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <CardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <CardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <CardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <CardComponent />
-        </SwiperSlide>
+        {countryDatas !== null
+          ? countryDatas.map((countryData, idx) => (
+              <SwiperSlide key={idx}>
+                <CardComponent cardData={countryData} country />
+              </SwiperSlide>
+            ))
+          : "Loading..."}
       </Swiper>
 
       <div className="button-area">
-        <button className="view-all-button">View All</button>
+        <Link to="/all-next-trip">
+          <button className="view-all-button">View All</button>
+        </Link>
       </div>
     </div>
   );

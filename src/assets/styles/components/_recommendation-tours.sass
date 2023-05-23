@@ -7,6 +7,36 @@
     @include grid($columns: repeat(5, 1fr))
     row-gap: 30px
 
+    &:hover > .big-card:not(:hover)
+      transform: scale(0.95)
+
   .big-card
+    transform: scale(1.05)
+    background-color: $light
+
     .content-area
       background-color: $light
+
+@media only screen and ( max-width: 1000px)
+  .recommendation-tours
+    .tours-list
+      @include grid($columns: repeat(4, 1fr))
+
+@media only screen and ( max-width: 800px)
+  .recommendation-tours
+    .tours-list
+      @include grid($columns: repeat(3, 1fr))
+
+@media only screen and ( max-width: 600px)
+  .recommendation-tours
+    .tours-list
+      @include grid($columns: repeat(2, 1fr))
+
+@media only screen and ( max-width: 420px)
+  .recommendation-tours
+    .tours-list
+      @include grid($columns: repeat(1, 1fr))
+
+    .big-card
+      .image-sec
+        height: 200px

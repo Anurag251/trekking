@@ -21,7 +21,7 @@ header
         color: $dark
 
   .header-top
-    height: 50px
+    height: 30px
     width: 100%
     background-color: $pri
 
@@ -48,29 +48,91 @@ header
       @include flex($justify: space-between)
 
     .logo
-      height: 80px
-      width: 80px
       border-radius: 50%
       position: relative
+      @include flex($justify: space-between)
+      max-width: 300px
 
       img
-        position: absolute
-        left: 50%
-        top: 15%
-        transform: translate(-50%, -50%)
-        @include image()
+        width: 50px
+        height: 50px
         object-fit: contain
+
+      h3
+        color: $light
+        margin-left: 10px
+        font-size: 16px
+        font-weight: 400
+
+    .side-nav-btn
+      cursor: pointer
+      background-color: #fff
+      height: 35px
+      width: 40px
+      @include flex($justify: center)
+      display: none
+      border-radius: 4px
+
+      i
+        font-size: 18px
+        color: $pri
 
     .nav-links
       @include flex($justify: flex-end)
       gap: 10px
+      height: 100%
 
-      li
+      .link-area
+        position: relative
+        height: 100%
+        @include flex($justify: center)
+        border-radius: 4px
+
         button
           padding: 0 1rem
           color: $light
           cursor: pointer
           font-size: 16px
+          height: 100%
+
+        &:hover
+          background-color: rgba($light, .2)
+
+          .more-links
+            top: 42px
+            opacity: 1
+            pointer-events: auto
+
+        .more-links
+          position: absolute
+          left: 50%
+          top: 30px
+          transform: translateX(-50%)
+          max-width: 200px
+          padding: 1rem
+          opacity: 0
+          pointer-events: none
+          @include fastTrans()
+
+          ul
+            padding: .6rem
+            background-color: #fff
+            border-radius: 4px
+            text-align: center
+            box-shadow: 0 4px 8px rgba($dark, .1)
+
+            li
+              width: 100%
+              margin-bottom: .4rem
+
+              button
+                color: $dark
+                width: 100%
+                padding: .4rem
+                border-radius: 4px
+
+                &:hover
+                  background-color: rgba($dark, .1)
 
     .social-links
       ul
@@ -79,3 +141,124 @@ header
         li
           padding: .3rem 1rem
           color: $light
+
+/***********      side-nav      ***********/
+.side-nav
+  position: fixed
+  top: 0
+  left: -300px
+  width: 260px
+  height: 100%
+  z-index: 110
+  pointer-events: none
+  @include trans()
+  border-radius: 0
+  background-color: #fff
+  border: 10px solid rgba($light, .4)
+  background-image: linear-gradient(180deg, rgba($sec, .9), rgba($pri, .9))
+  padding: 1rem
+
+  &.active
+    left: 0px
+    pointer-events: auto
+
+  .side-nav-close-btn
+    position: absolute
+    top: 10px
+    right: -10px
+    height: 30px
+    width: 40px
+    background-color: $light
+    border-radius: 30px 0px 0 30px
+    @include flex($justify: center)
+    color: #fa0000
+    font-size: 16px
+    cursor: pointer
+
+    i
+      @include trans()
+      transform: translateX(5px)
+
+    &:hover
+      i
+        transform: translateX(-5px)
+
+  .logo
+    width: 100%
+    margin-bottom: 1rem
+    @include flex($justify: center)
+    flex-direction: column
+
+    h3
+      color: $light
+      margin-top: .5rem
+      text-align: center
+      font-weight: 500
+
+    .logo-img
+      @include image()
+      height: 70px
+      width: 140px
+      object-fit: contain
+
+  .nav-links
+    a.active
+      .nav-btn
+        // background-color: rgba($pri, .8)
+        // box-shadow: 0 0 10px rgba($dark, .1)
+        // color: $dark
+        border: 1px solid $light
+        transform: scale(1.03)
+
+    .more-links
+      overflow: hidden
+      max-height: 0
+      background-color: rgba($light, .3)
+      border-radius: 10px
+      @include trans()
+
+      &.active
+        max-height: 1000px
+        padding: 1rem
+
+      li
+        button
+          padding: 1rem 1rem
+          font-size: 14px
+          color: $light
+          width: 100%
+          text-align: left
+          border-radius: 10px
+          cursor: pointer
+
+          &:hover
+            background-color: rgba($light, .3)
+
+    .nav-btn
+      padding: 1rem 1rem
+      font-size: 18px
+      color: $light
+      border-radius: 0
+      width: 100%
+      text-align: left
+      margin-bottom: 5px
+      cursor: pointer
+      transition: .4s all cubic-bazier(0,1,0,1)
+      border-radius: 10px
+
+      &:hover
+        background-color: rgba($light,.1)
+        box-shadow: 0 3px 10px rgba($dark, .1)
+        transform: scale(1.03)
+
+@media only screen and ( max-width: 1000px )
+  header
+    .header-top
+      display: none
+
+    .nav-bar
+      .nav-links
+        display: none
+
+      .side-nav-btn
+        display: flex

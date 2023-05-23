@@ -11,7 +11,7 @@ const PageSearchBoxComponent = () => {
         <SearchFilterBoxComponent />
       </div>
 
-
+      
       
     </div>
   );

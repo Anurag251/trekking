@@ -3,6 +3,7 @@
 @use '../helpers/_variables' as *
 
 .preview-card
+  cursor: pointer
   &:hover
     .name
       color: $sec
@@ -31,6 +32,22 @@
     @include fastTrans()
 
 .big-card
+  box-shadow: 0 4px 10px rgba($dark, .1)
+  border-radius: 10px
+  @include fastTrans()
+  background-color: #F7F7F7
+
+  &:hover
+    box-shadow: 0 4px 10px rgba($dark, .25)
+
+    .image-sec
+      .item-image
+        transform: scale(1.1)
+
+    .content-area
+      .name
+        color: $pri
+
   .image-sec
     position: relative
     height: 140px
@@ -45,6 +62,8 @@
       width: 100%
       @include image()
       z-index: 1
+      @include fastTrans()
+      cursor: pointer
 
     .heart
       position: absolute
@@ -56,14 +75,15 @@
   .content-area
     position: relative
     padding: 10px
-    background-color: #F7F7F7
     border-radius: 0 0 10px 10px
+    background-color: #F7F7F7
 
     .name
       font-size: 14px
       font-weight: 600
-      max-width: 200px
-      letter-spacing: 2px
+      max-width: 170px
+      color: $dark
+      cursor: pointer
 
     .user
       position: absolute
@@ -168,6 +188,7 @@
   padding: 1rem
   border: 1px solid rgba($dark, .4)
   border-radius: 10px
+  margin-bottom: 1rem
 
   .item-body
     @include flex($justify: flex-start)
@@ -178,6 +199,9 @@
   .image-area
     width: 300px
     height: 100%
+    border-radius: 10px
+    overflow: hidden
+    cursor: pointer
 
     .item-image
       @include image()
@@ -204,12 +228,17 @@
       font-weight: 500
       margin-bottom: .3rem
       color: $pri
+      cursor: pointer
 
     .package-time
       font-size: 14px
       color: $sec
       font-weight: 600
       margin-bottom: 1rem
+
+    .button-group
+      @include flex($justify: flex-start)
+      flex-wrap: wrap
 
     .package-cate
       padding: .4rem .7rem
@@ -219,6 +248,11 @@
       display: inline-block
       margin-bottom: 1rem
       margin-right: .4rem
+      cursor: pointer
+
+      &.active
+        background-color: $btn
+        color: $light
 
     .package-price
       font-size: 14px
@@ -239,16 +273,21 @@
 
   .item-footer
     @include flex($justify: flex-start)
+    flex-wrap: wrap
     gap: 30px
 
     .item
       text-align: center
+      margin-bottom: 0 !important
 
       .icon
         margin-bottom: 5px
 
         i
           font-size: 16px
+          color: $sec
 
       .name
         font-size: 12px
+
+

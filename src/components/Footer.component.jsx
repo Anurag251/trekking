@@ -1,7 +1,7 @@
-import Government from "../assets/images/Government Logo.jpeg";
+import Government from "../assets/images/Government Logo single.jpeg";
 import NTB from "../assets/images/NTB Logo.jpeg";
 import TAAN from "../assets/images/TAAN.png";
-import NMA from "../assets/images/NMA.png";
+import NMA from "../assets/images/NMA_new.jpeg";
 
 import { Link } from "react-router-dom";
 
@@ -11,16 +11,13 @@ const FooterComponent = () => {
       <div className="wrapper">
         <div className="footer-content">
           <div className="item">
-            <h4 className="footer-title">Company Logo</h4>
-
-            <p>Mountain Go Trekking Nepal</p>
-            <p>We are affiliated with: Government Logo, NTB Logo, TAAN, NMA</p>
+            <h5>We are affiliated with:</h5>
 
             <div className="logo-image-list">
               <img src={Government} alt="Government Logo" />
-              <img src={NTB} alt="NTB Logo" />
-              <img src={TAAN} alt="TAAN Logo" />
-              <img src={NMA} alt="NMA Logo" />
+              <img src={NTB} alt="Government Logo" />
+              <img src={TAAN} alt="Government Logo" />
+              <img src={NMA} alt="Government Logo" />
             </div>
 
             <h5>Connect with Us:</h5>
@@ -73,11 +70,21 @@ const FooterComponent = () => {
             <h4 className="footer-title">About</h4>
 
             <ul className="footer-about-list">
-              <li>About Us</li>
-              <li>Terms & Conditions</li>
-              <li>Testimonials</li>
-              <li>Contact us</li>
-              <li>Travels information</li>
+              <li>
+                <Link to="/about"> About Us</Link>
+              </li>
+              <li>
+                <Link to="/"> Terms & Conditions</Link>
+              </li>
+              <li>
+                <Link to="/testimonials"> Testimonials</Link>
+              </li>
+              <li>
+                <Link to="/contacts"> Contact us</Link>
+              </li>
+              <li>
+                <Link to="/"> Travels information</Link>
+              </li>
             </ul>
           </div>
 

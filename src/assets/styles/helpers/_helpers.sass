@@ -68,3 +68,154 @@ section
     &:hover
       box-shadow: 0 0 0 0 $btn inset
       color: $btn
+
+.all-package-list
+  @include grid($columns: repeat(5, 1fr))
+
+.teams-list
+  @include grid($columns: repeat(6, 1fr))
+
+.all-page-search
+  background-color: $light
+  padding: 3rem 0
+
+  .hotel-search
+    margin: 0
+    .group
+      background-color: #F7F7F7
+
+.page-loading
+  height: 100%
+  width: 100%
+  background-color: $light
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 1000
+  @include flex($justify: center)
+
+.success-message
+  position: fixed
+  left: 0
+  top: 0
+  height: 100%
+  width: 100%
+  @include flex($justify: center)
+  background-color: rgba($dark, .7)
+  backdrop-filter: blur(5px)
+  z-index: 20
+  opacity: 0
+  pointer-events: none
+  @include trans()
+
+  &.active
+    opacity: 1
+    pointer-events: auto
+
+    .message-box
+      transform: scale(1)
+
+  .message-box
+    position: relative
+    border-radius: 10px
+    background-color: $light
+    box-shadow: 0 4px 10px rgba($dark, .3)
+    padding: 1rem
+    transform: scale(1.2)
+    @include trans()
+
+    .message-icon
+      position: absolute
+      left: 50%
+      top: 0
+      transform: translate(-50%, -50%)
+      height: 50px
+      width: 50px
+      border-radius: 50%
+      @include flex($justify: center)
+      background-color: $sec
+
+      i
+        font-size: 30px
+        color: $light
+
+    .message-title
+      font-size: 28px
+      margin: 2rem 0
+      text-align: center
+
+    .message-content
+      font-size: 18px
+      font-weight: 500
+      text-align: center
+      color: $dark
+      margin-bottom: 2rem
+      text-align: center
+
+    .message-close-button
+      @include customButton($bgcolor: $pri, $color: $light)
+      width: 100%
+
+@media only screen and (max-width: 1300px)
+  .wrapper
+    max-width: 1200px
+
+@media only screen and (max-width: 1200px)
+  .wrapper
+    max-width: 1100px
+
+@media only screen and (max-width: 1100px)
+  .wrapper
+    max-width: 1000px
+
+  .our-teams
+    .teams-list
+      @include grid($columns: repeat(5, 1fr))
+
+@media only screen and (max-width: 1000px)
+  .wrapper
+    max-width: 800px
+
+  .all-package-list
+    @include grid($columns: repeat(4, 1fr))
+  
+  .our-teams
+    .teams-list
+      @include grid($columns: repeat(4, 1fr))
+
+
+@media only screen and (max-width: 800px)
+  .wrapper
+    max-width: 600px
+  
+  .all-package-list
+    @include grid($columns: repeat(3, 1fr))
+
+  .our-teams
+    .teams-list
+      @include grid($columns: repeat(3, 1fr))
+
+@media only screen and (max-width: 550px)
+  .all-package-list
+    @include grid($columns: repeat(2, 1fr))
+
+  .our-teams
+    .teams-list
+      @include grid($columns: repeat(2, 1fr))
+
+@media only screen and (max-width: 500px)
+  .sec-title
+    h3
+      font-size: 22px
+
+@media only screen and (max-width: 450px)
+  .wrapper
+    padding: 0 1rem
+
+@media only screen and (max-width: 370px)
+  .all-package-list
+    @include grid($columns: repeat(1, 1fr))
+
+  .our-teams
+    .teams-list
+      @include grid($columns: repeat(1, 1fr))

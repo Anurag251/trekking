@@ -3,7 +3,7 @@
 @use '../helpers/_variables' as *
 
 .package-descriptions
-  width: 80%
+  width: 100%
 
   .package-features
     border-bottom: 1px solid rgba($dark, .3)
@@ -36,14 +36,28 @@
       .item
         padding: 1rem 0
         border-bottom: 1px solid rgba($dark, .3)
+        max-height: 60px
+        overflow: hidden
+        @include trans()
+
+        &.active
+          max-height: 10000px
+
+          .title
+            .arrow-rotate
+              transform: rotate(180deg)
 
         .title
           @include flex($justify: space-between)
           color: $pri
+          cursor: pointer
 
           h4
             font-size: 20px
             font-weight: 500
+
+          .arrow-rotate
+            @include trans()
 
         .inner-content
           margin-top: 2rem
@@ -54,8 +68,54 @@
             margin-bottom: 1rem
 
           ul
-            padding-left: 1rem
-            
+            padding-left: 1.6rem
+            margin-bottom: 2rem
+
             li
               margin-bottom: .5rem
               list-style: disc
+
+          .faq
+            padding: 0
+
+            li
+              list-style: none
+              padding: 1rem
+              border-radius: 10px
+              background-color: $light
+              margin-bottom: 1rem
+              max-height: 60px
+              overflow: hidden
+              @include trans()
+
+              &:hover
+                box-shadow: 0 4px 10px rgba($dark, .1)
+
+              &.active
+                max-height: 1000px
+
+                .title
+                  border-bottom: 1px solid rgba($dark, .2)
+                  padding: .5rem 0 1rem
+
+                  i
+                    transform: rotate(180deg)
+
+              .title
+                @include flex($justify: space-between)
+                padding: .4rem 0 1rem
+                border-bottom: 1px solid transparent
+                margin-bottom: 1rem
+                cursor: pointer
+                font-weight: 500
+
+                i
+                  font-size: 16px
+                  @include trans()
+
+              .desc
+                font-size: 14px
+                line-height: 1.6rem
+                text-align: justify
+                color: rgba($dark, .8)
+                text-align: justify

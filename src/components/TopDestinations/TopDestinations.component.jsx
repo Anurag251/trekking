@@ -8,8 +8,13 @@ import { Autoplay, Navigation } from "swiper";
 
 import SectionTitleComponent from "../Titles/SectionTitle.component";
 import CardComponent from "../Cards/Card.component";
+import { useContext } from "react";
+import { AllDataContext } from "../../context/AllData.context";
+import { Link } from "react-router-dom";
 
 const TopDestinationsComponent = () => {
+  const { categoriesDatas } = useContext(AllDataContext);
+
   return (
     <div className="top-destinations">
       <SectionTitleComponent title="Packages">
@@ -42,33 +47,19 @@ const TopDestinationsComponent = () => {
         spaceBetween={20}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <CardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <CardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <CardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <CardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <CardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <CardComponent />
-        </SwiperSlide>
+        {categoriesDatas !== null
+          ? categoriesDatas.map((categoriesData, idx) => (
+              <SwiperSlide key={idx}>
+                <CardComponent cardData={categoriesData} />
+              </SwiperSlide>
+            ))
+          : "Loading..."}
       </Swiper>
 
       <div className="button-area">
-        <button className="view-all-button">View All</button>
+        <Link to="/all-trip">
+          <button className="view-all-button">View All</button>
+        </Link>
       </div>
     </div>
   );

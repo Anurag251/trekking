@@ -3,6 +3,21 @@
 @use '../helpers/_variables' as *
 
 .our-teams
+  .mySwiper
+    .swiper-wrapper
+      padding: 1rem 0
+
   .teams-list
     @include grid($columns: repeat(6, 1fr))
-    
+
+  .teams-card
+    box-shadow: 0 4px 10px rgba($dark, .1)
+    border-radius: 10px
+
+    .name
+      margin-top: 1rem
+
+    .role
+      padding-bottom: 1rem
+
+

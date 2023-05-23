@@ -1,0 +1,21 @@
+@use '../helpers/_mixin' as *
+@use '../layout/_grid' as *
+@use '../helpers/_variables' as *
+
+.blog-details-page
+  .image
+    height: 500px
+    width: 100%
+
+    img
+      @include image()
+
+  .title
+    font-size: 24px
+    margin: 1rem 0
+
+  .desc
+    font-size: 18px
+    text-align: justify
+    color: rgba($dark, .7)
+    line-height: 2rem

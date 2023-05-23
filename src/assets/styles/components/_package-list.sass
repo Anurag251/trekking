@@ -3,7 +3,6 @@
 @use '../helpers/_mixin' as *
 
 .package-list-page
-
   .package-layout
     @include flex($justify: stretch)
     align-items: flex-start
@@ -16,13 +15,28 @@
       border-radius: 10px
       background-color: $light
       position: sticky
-      top: 140px
+      top: 100px
+
+      .title-sec
+        @include flex($justify: space-between)
+        border-bottom: 1px solid rgba($dark, .3)
+        padding: 1rem
+
+        .fiter-close-button
+          height: 23px
+          width: 23px
+          border-radius: 50%
+          @include flex($justify: center)
+          background-color: $pri
+          cursor: pointer
+
+          i
+            font-size: 14px
+            color: $light
 
       .filter-title
-        padding: 1rem
         font-size: 18px
         font-weight: 600
-        border-bottom: 1px solid rgba($dark, .3)
         color: $pri
 
       .box-item
@@ -60,16 +74,73 @@
     .all-packages-list
       width: 80%
 
+      .item
+        margin-bottom: 1rem
+
       .package-title-area
         @include flex($justify: space-between)
         margin-bottom: 1rem
 
         .package-list-title
           font-size: 24px
-          
+
         .packages-we-have
+          @include flex($justify: flex-end)
+
+          .filter-button
+            margin-left: 1rem
+            @include customButton($bgcolor: $pri, $color: $light)
+            display: none
+
+            i
+              margin-left: 10px
+
           .total-packages
             font-size: 14px
             font-weight: 500
             color: rgba($dark, .7)
 
+@media only screen and ( max-width: 1100px )
+  .package-list-page
+    .package-layout
+
+      .filter-box
+        position: fixed
+        width: 250px
+        top: 10rem
+        left: -400px
+        @include trans()
+
+        &.active
+          left: 20px
+
+      .all-packages-list
+        width: 100%
+
+        .package-title-area
+          .packages-we-have
+            .filter-button
+              display: block
+
+@media only screen and ( max-width: 800px )
+  .package-list-card
+    padding: 1rem
+    border: 1px solid rgba($dark, .4)
+    border-radius: 10px
+    margin-bottom: 1rem
+
+    .item-body
+      @include flex($justify: flex-start)
+      flex-direction: column
+
+      .image-area
+        width: 100%
+        height: 230px
+        margin-bottom: .5rem
+
+      .content
+        padding: 0
+
+        .more-button
+          button
+            width: 100%

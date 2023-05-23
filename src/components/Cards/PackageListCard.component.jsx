@@ -1,33 +1,91 @@
-import { Link } from "react-router-dom";
-import cardImage from "../../assets/images/card4.png";
+/* eslint-disable react/prop-types */
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-const PackageListCardComponent = () => {
+const PackageListCardComponent = ({ cardData, cateData }) => {
+  const [choosenPrice, setChoosenPrice] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (cardData !== null) {
+      setChoosenPrice(cardData.price[0].value);
+    }
+  }, [cardData]);
+
   return (
     <div className="package-list-card">
       <div className="item-body">
-        <picture className="image-area">
-          <img className="item-image" src={cardImage} alt="" />
+        <picture
+          className="image-area"
+          onClick={() => {
+            navigate(`/packages-detail/${cardData.id}`, {
+              state: {
+                id: cardData.id,
+              },
+            });
+          }}
+        >
+          <img
+            className="item-image"
+            src={cardData.image !== null ? cardData.image.original_image : ""}
+            alt="package-image"
+          />
         </picture>
 
         <div className="content">
           <div className="inner">
             <div className="infos">
-              <Link to="/packages-detail">
-                <div className="package-name">Annapurna Base Camp Trek</div>
-              </Link>
-              <div className="package-time">7 night / 8 days</div>
-              <div className="package-cate">Standard</div>
-              <div className="package-cate">Luxury</div>
+              <div
+                className="package-name"
+                onClick={() => {
+                  navigate(`/packages-detail/${cardData.id}`, {
+                    state: {
+                      id: cardData.id,
+                    },
+                  });
+                }}
+              >
+                {cardData.title}
+              </div>
+              <div className="package-time">{cardData.duration}</div>
+
+              <div className="button-group">
+                {cardData !== null
+                  ? cardData.price.map((price, idx) => (
+                      <button
+                        className={`package-cate ${
+                          price.value === choosenPrice ? "active" : ""
+                        }`}
+                        key={idx}
+                        onClick={() => {
+                          setChoosenPrice(price.value);
+                        }}
+                      >
+                        {price.label}
+                      </button>
+                    ))
+                  : null}
+              </div>
             </div>
 
             <div className="package-price">
               <p>Starting from :</p>
-              <span>US $ 9000.00</span>
+              <span>US ${choosenPrice}</span>
             </div>
           </div>
 
           <div className="more-button">
-            <button>More info</button>
+            <button
+              onClick={() => {
+                navigate(`/packages-detail/${cardData.id}`, {
+                  state: {
+                    id: cardData.id,
+                  },
+                });
+              }}
+            >
+              More info
+            </button>
           </div>
         </div>
       </div>

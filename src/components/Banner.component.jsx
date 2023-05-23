@@ -6,10 +6,12 @@ import "swiper/css/pagination";
 import { Autoplay } from "swiper";
 
 import bannerImage from "../assets/images/banner.jpg";
-import bannerImage2 from "../assets/images/banner2.jpeg";
-import bannerImage3 from "../assets/images/banner3.jpeg";
+import { useContext } from "react";
+import { AllDataContext } from "../context/AllData.context";
 
 const BannerComponent = () => {
+  const { bannerDatas } = useContext(AllDataContext);
+
   return (
     <div className="banner">
       <Swiper
@@ -23,32 +25,24 @@ const BannerComponent = () => {
         modules={[Autoplay]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <div
-            className="item"
-            style={{ backgroundImage: `url(${bannerImage})` }}
-          >
-            <div className="content">Nepal</div>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <div
-            className="item"
-            style={{ backgroundImage: `url(${bannerImage2})` }}
-          >
-            <div className="content">Nepal</div>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <div
-            className="item"
-            style={{ backgroundImage: `url(${bannerImage3})` }}
-          >
-            <div className="content">Bhutan</div>
-          </div>
-        </SwiperSlide>
+        {bannerDatas !== null
+          ? bannerDatas.map((bannerData, idx) => (
+              <SwiperSlide key={idx}>
+                <div
+                  className="item"
+                  style={{
+                    backgroundImage: `url(${
+                      bannerData.image !== null
+                        ? bannerData.image.big_image
+                        : ""
+                    })`,
+                  }}
+                >
+                  <div className="content">{bannerData.title}</div>
+                </div>
+              </SwiperSlide>
+            ))
+          : "Loading..."}
       </Swiper>
     </div>
   );

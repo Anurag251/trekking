@@ -1,12 +1,12 @@
 import PackageDescriptionListComponent from "./PackageDescriptionList.component";
 import PackageFeaturesComponent from "./PackageFeatures.component";
 
-const PackageDescriptionComponent = () => {
+const PackageDescriptionComponent = ({selectedPackage}) => {
   return (
     <div className="package-descriptions">
       <PackageFeaturesComponent />
 
-      <PackageDescriptionListComponent />
+      <PackageDescriptionListComponent selectedPackage={selectedPackage} />
     </div>
   );
 };

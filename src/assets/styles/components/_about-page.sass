@@ -1,0 +1,31 @@
+@use '../helpers/_mixin' as *
+@use '../layout/_grid' as *
+@use '../helpers/_variables' as *
+
+.about-page
+  .image-sec
+    height: 500px
+    width: 100%
+    margin-bottom: 1rem
+
+    img
+      @include image()
+
+  .about-desc
+    p
+      text-align: justify
+      line-height: 2rem
+      font-size: 18px
+      color: rgba($dark, .8)
+
+@media only screen and ( max-width: 500px )
+  .about-page
+    .image-sec
+      height: 250px
+
+    .about-desc
+      p
+        line-height: 1.6rem
+        font-size: 15px
+
+  

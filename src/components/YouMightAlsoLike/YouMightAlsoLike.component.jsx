@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import BigCardComponent from "../Cards/BigCard.component";
 import SectionTitleComponent from "../Titles/SectionTitle.component";
+import { AllDataContext } from "../../context/AllData.context";
 
 const YouMightAlsoLikeComponent = () => {
+  const { tripDatas } = useContext(AllDataContext);
+
   return (
     <div className="you-might-also-like">
       <SectionTitleComponent title="Packages">
@@ -9,18 +13,11 @@ const YouMightAlsoLikeComponent = () => {
       </SectionTitleComponent>
 
       <div className="like-list">
-        <BigCardComponent />
-        <BigCardComponent />
-        <BigCardComponent />
-        <BigCardComponent />
-        <BigCardComponent />
-        <BigCardComponent />
-        <BigCardComponent />
-        <BigCardComponent />
-      </div>
-
-      <div className="button-area">
-        <button className="view-all-button">View All</button>
+        {tripDatas !== null
+          ? tripDatas.map((tripData, idx) => (
+              <BigCardComponent key={idx} cardData={tripData} />
+            ))
+          : "Loading..."}
       </div>
     </div>
   );

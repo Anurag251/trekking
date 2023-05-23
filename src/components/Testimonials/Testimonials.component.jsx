@@ -7,8 +7,12 @@ import { Autoplay, Navigation } from "swiper";
 
 import SectionTitleComponent from "../Titles/SectionTitle.component";
 import TestimonialsCardComponent from "../Cards/testimonialsCard.component";
+import { AllDataContext } from "../../context/AllData.context";
+import { useContext } from "react";
 
 const TestimonialsComponent = () => {
+  const { reviewDatas } = useContext(AllDataContext);
+
   return (
     <div className="testimonials">
       <SectionTitleComponent title="Testimonials">
@@ -27,18 +31,14 @@ const TestimonialsComponent = () => {
         spaceBetween={10}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <TestimonialsCardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <TestimonialsCardComponent />
-        </SwiperSlide>
+        {reviewDatas !== null
+          ? reviewDatas.map((reviewData, idx) => (
+              <SwiperSlide key={idx}>
+                <TestimonialsCardComponent cardData={reviewData} />
+              </SwiperSlide>
+            ))
+          : "Loading..."}
       </Swiper>
-
-      <div className="button-area">
-        <button className="view-all-button">View All</button>
-      </div>
     </div>
   );
 };

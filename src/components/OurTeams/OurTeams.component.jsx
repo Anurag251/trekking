@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -8,8 +9,13 @@ import { Autoplay, Navigation } from "swiper";
 
 import TeamsCardComponent from "../Cards/TeamsCard.component";
 import SectionTitleComponent from "../Titles/SectionTitle.component";
+import { AllDataContext } from "../../context/AllData.context";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 const OurTeamsComponent = () => {
+  const { teamDatas } = useContext(AllDataContext);
+
   return (
     <div className="our-teams">
       <SectionTitleComponent title="Teams">
@@ -51,37 +57,19 @@ const OurTeamsComponent = () => {
         spaceBetween={20}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <TeamsCardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <TeamsCardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <TeamsCardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <TeamsCardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <TeamsCardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <TeamsCardComponent />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <TeamsCardComponent />
-        </SwiperSlide>
+        {teamDatas !== null
+          ? teamDatas.map((teamData, idx) => (
+              <SwiperSlide key={idx}>
+                <TeamsCardComponent cardData={teamData} />
+              </SwiperSlide>
+            ))
+          : "Loading..."}
       </Swiper>
 
       <div className="button-area">
-        <button className="view-all-button">View All</button>
+        <Link to="/teams">
+          <button className="view-all-button">View All</button>
+        </Link>
       </div>
     </div>
   );
