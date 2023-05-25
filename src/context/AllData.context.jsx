@@ -69,7 +69,7 @@ export const AllDataProvider = ({ children }) => {
         if (res.status === 200) {
           setTripDatas(res.data.data);
           // console.log("trip: ");
-          console.log(res.data.data);
+          // console.log(res.data.data);
         }
       })
       .catch((err) => {

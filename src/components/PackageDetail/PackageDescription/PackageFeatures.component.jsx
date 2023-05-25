@@ -1,4 +1,5 @@
-const PackageFeaturesComponent = () => {
+/* eslint-disable react/prop-types */
+const PackageFeaturesComponent = ({ selectedPackage }) => {
   return (
     <div className="package-features">
       <div className="list">
@@ -8,7 +9,7 @@ const PackageFeaturesComponent = () => {
           </div>
           <div className="content">
             <div className="name">Duration</div>
-            <p>14 night / 15 days</p>
+            <p>{selectedPackage && selectedPackage.duration}</p>
           </div>
         </div>
 
@@ -18,7 +19,7 @@ const PackageFeaturesComponent = () => {
           </div>
           <div className="content">
             <div className="name">Tour Type</div>
-            <p>Tours/Trekking</p>
+            <p>{selectedPackage && selectedPackage.type}</p>
           </div>
         </div>
 
@@ -28,7 +29,7 @@ const PackageFeaturesComponent = () => {
           </div>
           <div className="content">
             <div className="name">Max. Altitude</div>
-            <p> 45000 M</p>
+            <p> {selectedPackage && selectedPackage.elevation}</p>
           </div>
         </div>
 
@@ -38,7 +39,7 @@ const PackageFeaturesComponent = () => {
           </div>
           <div className="content">
             <div className="name">Group Size</div>
-            <p>2- 18</p>
+            <p>{selectedPackage && selectedPackage.groupsize}</p>
           </div>
         </div>
       </div>

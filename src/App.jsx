@@ -17,7 +17,7 @@ import ContactPage from "./pages/Contact.page";
 import DestinationPage from "./pages/Destination.page";
 import PageSearchBoxComponent from "./components/SearchFilter/PageSearchBox.component";
 import LoadingComponent from "./components/Loading.component";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AllDataContext } from "./context/AllData.context";
 import SearchedDataPage from "./pages/SearchedData.page";
 import SuccessMessageComponent from "./components/SuccessMessage.component";
@@ -28,6 +28,15 @@ function App() {
   const location = useLocation();
 
   const { loading } = useContext(AllDataContext);
+
+  // useEffect(() => {
+  //   function googleTranslateElementInit() {
+  //     new google.translate.TranslateElement(
+  //       { pageLanguage: "en" },
+  //       "google_translate_element"
+  //     );
+  //   }
+  // }, []);
 
   return (
     <div className="app">

@@ -24,9 +24,24 @@
         position: relative
         z-index: 2
         font-weight: 700
-        font-size: 90px
-        line-height: 107px
+        font-size: 60px
+        line-height: 70px
         letter-spacing: 2px
+        padding: 1rem
         color: $light
         text-align: center
         text-shadow: 0px 8px 18px rgba(0, 0, 0, 0.25)
+
+@media only screen and ( max-width: 500px )
+  .banner
+    .mySwiper
+      .item
+        height: 35vh
+        width: 100%
+        @include bgImage()
+        @include flex($justify: center)
+        position: relative
+
+        .content
+          font-size: 30px
+          line-height: 2.5rem

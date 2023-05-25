@@ -5,7 +5,6 @@ import { AllDataContext } from "../context/AllData.context";
 
 const AboutPage = () => {
   const { aboutDetails } = useContext(AllDataContext);
-  console.log(aboutDetails);
 
   useEffect(() => {
     window.scroll(0, 0);

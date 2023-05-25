@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import cardImage from "../../assets/images/blog1.png";
 
 const TeamsCardComponent = ({cardData}) => {
   return (

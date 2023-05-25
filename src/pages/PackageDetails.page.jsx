@@ -37,11 +37,11 @@ const PackageDetailsPage = () => {
             {selectedPackage !== null ? selectedPackage.title : ""}
           </div>
 
-          <div className="pckage-rating">
+          {/* <div className="pckage-rating">
             <span>Excellent</span>
             <IconsStars />
             <p>from 3 reviews</p>
-          </div>
+          </div> */}
         </div>
 
         <PackageDetailComponent selectedPackage={selectedPackage} />

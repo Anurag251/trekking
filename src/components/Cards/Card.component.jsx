@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 const CardComponent = ({ cardData, blogCard, country }) => {
   const navigate = useNavigate();
-  // console.log(cardData)
 
   return (
     <div

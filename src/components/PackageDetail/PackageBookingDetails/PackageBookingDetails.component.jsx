@@ -40,6 +40,7 @@ const PackageBookingDetails = ({ selectedPackage }) => {
           noofdays: formValues.noOfDays,
           noofperson: formValues.noOfPerson,
           comment: formValues.comment,
+          trip_id: selectedPackage.id,
         })
         .then((res) => {
           // console.log(res);
@@ -93,7 +94,9 @@ const PackageBookingDetails = ({ selectedPackage }) => {
             {selectedPackage !== null
               ? selectedPackage.price.map((price, idx) => (
                   <button
-                  className={`${price.value === choosenPrice ? "active" : ""}`}
+                    className={`${
+                      price.value === choosenPrice ? "active" : ""
+                    }`}
                     key={idx}
                     onClick={() => {
                       setChoosenPrice(price.value);
@@ -108,9 +111,7 @@ const PackageBookingDetails = ({ selectedPackage }) => {
 
         <div className="package-info">
           <div className="title">Cost Per Person/</div>
-          <div className="package-price-area">
-            US$ {choosenPrice}
-          </div>
+          <div className="package-price-area">US$ {choosenPrice}</div>
         </div>
 
         <div>
@@ -329,7 +330,7 @@ const PackageBookingDetails = ({ selectedPackage }) => {
         </form>
       </div>
 
-     {/*  <div className="item">
+      {/*  <div className="item">
         <div className="package-informaitons">
           <div className="title">Information Contact</div>
 

@@ -14,7 +14,9 @@ const YouMightAlsoLikeComponent = () => {
 
       <div className="like-list">
         {tripDatas !== null
-          ? tripDatas.map((tripData, idx) => (
+          ? tripDatas
+          .filter((data, idx) => idx <= 4)
+          .map((tripData, idx) => (
               <BigCardComponent key={idx} cardData={tripData} />
             ))
           : "Loading..."}

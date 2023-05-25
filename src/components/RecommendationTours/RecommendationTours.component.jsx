@@ -24,7 +24,9 @@ const RecommendationToursComponent = () => {
         <CardComponent />
         <CardComponent /> */}
         {tripDatas !== null
-          ? tripDatas.map((tripData, idx) => (
+          ?  tripDatas
+          .filter((data, idx) => idx <= 9)
+          .map((tripData, idx) => (
               <BigCardComponent key={idx} cardData={tripData} />
             ))
           : "Loading..."}

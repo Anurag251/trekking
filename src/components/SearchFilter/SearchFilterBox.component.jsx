@@ -39,7 +39,6 @@ const SearchFilterBoxComponent = () => {
           setButtonLoading(false);
           if (res.status === 200) {
             if (res.data.data.length) {
-              console.log(res);
               navigate("/search", {
                 state: {
                   searchedData: res.data.data,

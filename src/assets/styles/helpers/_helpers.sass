@@ -172,28 +172,39 @@ section
     .teams-list
       @include grid($columns: repeat(5, 1fr))
 
+  .you-might-also-like
+    .like-list
+      @include grid($columns: repeat(4, 1fr))
+
 @media only screen and (max-width: 1000px)
   .wrapper
     max-width: 800px
 
   .all-package-list
     @include grid($columns: repeat(4, 1fr))
-  
+
   .our-teams
     .teams-list
       @include grid($columns: repeat(4, 1fr))
 
+  .you-might-also-like
+    .like-list
+      @include grid($columns: repeat(3, 1fr))
 
 @media only screen and (max-width: 800px)
   .wrapper
     max-width: 600px
-  
+
   .all-package-list
     @include grid($columns: repeat(3, 1fr))
 
   .our-teams
     .teams-list
       @include grid($columns: repeat(3, 1fr))
+
+  .you-might-also-like
+    .like-list
+      @include grid($columns: repeat(2, 1fr))
 
 @media only screen and (max-width: 550px)
   .all-package-list
@@ -211,6 +222,10 @@ section
 @media only screen and (max-width: 450px)
   .wrapper
     padding: 0 1rem
+
+  .you-might-also-like
+    .like-list
+      @include grid($columns: repeat(1, 1fr))
 
 @media only screen and (max-width: 370px)
   .all-package-list

@@ -11,9 +11,10 @@ import SectionTitleComponent from "../Titles/SectionTitle.component";
 import { AllDataContext } from "../../context/AllData.context";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import BigCardComponent from "../Cards/BigCard.component";
 
 const RecommendedForYouComponent = () => {
-  const { countryDatas } = useContext(AllDataContext);
+  const { tripDatas } = useContext(AllDataContext);
   return (
     <div className="recommended-for-you">
       <SectionTitleComponent title="Packages">
@@ -46,12 +47,14 @@ const RecommendedForYouComponent = () => {
         }}
         className="mySwiper"
       >
-        {countryDatas !== null
-          ? countryDatas.map((countryData, idx) => (
-              <SwiperSlide key={idx}>
-                <CardComponent cardData={countryData} country />
-              </SwiperSlide>
-            ))
+        {tripDatas !== null
+          ? tripDatas
+              .filter((categoriesData) => categoriesData.recommended === 1)
+              .map((tripData, idx) => (
+                <SwiperSlide key={idx}>
+                  <BigCardComponent key={idx} cardData={tripData} />
+                </SwiperSlide>
+              ))
           : "Loading..."}
       </Swiper>
 

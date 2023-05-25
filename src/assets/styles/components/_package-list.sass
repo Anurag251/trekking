@@ -29,6 +29,7 @@
           @include flex($justify: center)
           background-color: $pri
           cursor: pointer
+          display: none
 
           i
             font-size: 14px
@@ -86,6 +87,8 @@
 
         .packages-we-have
           @include flex($justify: flex-end)
+          gap: 10px
+          flex-wrap: wrap
 
           .filter-button
             margin-left: 1rem
@@ -103,16 +106,21 @@
 @media only screen and ( max-width: 1100px )
   .package-list-page
     .package-layout
+      position: relative
 
       .filter-box
-        position: fixed
+        position: absolute
         width: 250px
-        top: 10rem
-        left: -400px
+        top: 4rem
+        right: -400px
         @include trans()
 
         &.active
-          left: 20px
+          right: 0
+
+        .title-sec
+          .fiter-close-button
+            display: flex
 
       .all-packages-list
         width: 100%
@@ -123,6 +131,16 @@
               display: block
 
 @media only screen and ( max-width: 800px )
+  // .package-list-page
+  //   .package-layout
+  //     .all-packages-list
+  //       .packages-we-have
+  //         flex-direction: column
+  //         align-items: flex-end !important
+
+  //         .filter-button
+  //           order: 1 !important
+
   .package-list-card
     padding: 1rem
     border: 1px solid rgba($dark, .4)
@@ -140,6 +158,26 @@
 
       .content
         padding: 0
+
+        .package-name
+          font-size: 18px
+
+        .package-time
+          font-size: 12px
+
+        .button-group
+          button
+            font-size: 12px
+
+        .package-price
+          font-size: 12px
+          padding: .6rem
+
+          p
+            font-size: 14px
+
+          span
+            font-size: 16px
 
         .more-button
           button
