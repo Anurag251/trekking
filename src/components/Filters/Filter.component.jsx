@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import CategoriesFilterComponent from "./CategoriesFilter.component";
 import { AllDataContext } from "../../context/AllData.context";
+import LoadingComponent from "../Loading.component";
 
 const FilterComponent = () => {
   const {
@@ -79,7 +80,7 @@ const FilterComponent = () => {
                   </label>
                 </div>
               ))
-            : "Loading..."}
+            : <LoadingComponent />}
         </CategoriesFilterComponent>
       </div>
     </div>

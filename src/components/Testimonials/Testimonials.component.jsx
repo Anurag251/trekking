@@ -9,6 +9,7 @@ import SectionTitleComponent from "../Titles/SectionTitle.component";
 import TestimonialsCardComponent from "../Cards/testimonialsCard.component";
 import { AllDataContext } from "../../context/AllData.context";
 import { useContext } from "react";
+import LoadingComponent from "../Loading.component";
 
 const TestimonialsComponent = () => {
   const { reviewDatas } = useContext(AllDataContext);
@@ -37,7 +38,7 @@ const TestimonialsComponent = () => {
                 <TestimonialsCardComponent cardData={reviewData} />
               </SwiperSlide>
             ))
-          : "Loading..."}
+          : <LoadingComponent />}
       </Swiper>
     </div>
   );

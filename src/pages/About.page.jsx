@@ -6,6 +6,8 @@ import { AllDataContext } from "../context/AllData.context";
 const AboutPage = () => {
   const { aboutDetails } = useContext(AllDataContext);
 
+  // console.log(aboutDetails)
+
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
@@ -20,7 +22,7 @@ const AboutPage = () => {
 
           <div className="image-sec">
             {aboutDetails && aboutDetails.image !== null ? (
-              <img src={aboutDetails[0].image} alt="aboutImage" />
+              <img src={aboutDetails[0].image.original_image} alt="aboutImage" />
             ) : null}
           </div>
           <article className="about-desc">

@@ -3,6 +3,20 @@
 @use '../helpers/_variables' as *
 
 .destination-page
+  .recommended-for-you
+    .big-card
+      box-shadow: none
+
+      .image-sec
+        border-radius: 10px
+        height: 250px
+
+      .content-area
+        background: none !important
+
+        .item-footer
+          display: none
+
   .destination-details
     .switch-button
       @include flex($justify: center)

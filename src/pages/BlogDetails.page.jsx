@@ -14,11 +14,14 @@ const BlogDetailsPage = () => {
       blogDatas.forEach((blogData) => {
         if (location.state.id === blogData.id) {
           setSelectedData(blogData);
-          console.log(blogData);
         }
       });
     }
   }, [blogDatas, location]);
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
 
   return (
     <div className="blog-details-page">

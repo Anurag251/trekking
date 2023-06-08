@@ -11,6 +11,7 @@ import CardComponent from "../Cards/Card.component";
 import { useContext } from "react";
 import { AllDataContext } from "../../context/AllData.context";
 import { Link } from "react-router-dom";
+import LoadingComponent from "../Loading.component";
 
 const TopDestinationsComponent = () => {
   const { categoriesDatas } = useContext(AllDataContext);
@@ -53,7 +54,7 @@ const TopDestinationsComponent = () => {
                 <CardComponent cardData={categoriesData} />
               </SwiperSlide>
             ))
-          : "Loading..."}
+          : <LoadingComponent />}
       </Swiper>
 
       <div className="button-area">

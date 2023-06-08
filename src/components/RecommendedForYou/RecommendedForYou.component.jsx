@@ -6,12 +6,12 @@ import "swiper/css/navigation";
 
 import { Autoplay, Navigation } from "swiper";
 
-import CardComponent from "../Cards/Card.component";
 import SectionTitleComponent from "../Titles/SectionTitle.component";
 import { AllDataContext } from "../../context/AllData.context";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import BigCardComponent from "../Cards/BigCard.component";
+import LoadingComponent from "../Loading.component";
 
 const RecommendedForYouComponent = () => {
   const { tripDatas } = useContext(AllDataContext);
@@ -55,7 +55,7 @@ const RecommendedForYouComponent = () => {
                   <BigCardComponent key={idx} cardData={tripData} />
                 </SwiperSlide>
               ))
-          : "Loading..."}
+          : <LoadingComponent />}
       </Swiper>
 
       <div className="button-area">

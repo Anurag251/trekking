@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react";
 import CardComponent from "../components/Cards/Card.component";
 import SectionTitleComponent from "../components/Titles/SectionTitle.component";
 import { AllDataContext } from "../context/AllData.context";
+import LoadingComponent from "../components/Loading.component";
 
 const RecommendedForYouPage = () => {
   const { countryDatas } = useContext(AllDataContext);
@@ -24,7 +25,7 @@ const RecommendedForYouPage = () => {
                 ? countryDatas.map((countryData, idx) => (
                     <CardComponent key={idx} cardData={countryData} country />
                   ))
-                : "Loading..."}
+                : <LoadingComponent />}
             </div>
           </div>
         </div>

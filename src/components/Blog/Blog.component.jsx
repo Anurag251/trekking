@@ -3,6 +3,7 @@ import { AllDataContext } from "../../context/AllData.context";
 import CardComponent from "../Cards/Card.component";
 import SectionTitleComponent from "../Titles/SectionTitle.component";
 import { Link } from "react-router-dom";
+import LoadingComponent from "../Loading.component";
 
 const BlogComponent = () => {
   const { blogDatas } = useContext(AllDataContext);
@@ -18,7 +19,7 @@ const BlogComponent = () => {
           ? blogDatas.map((blogData, idx) => (
               <CardComponent key={idx} cardData={blogData} blogCard />
             ))
-          : "Loading..."}
+          :<LoadingComponent />}
       </div>
 
       <div className="button-area">

@@ -1,32 +1,88 @@
 import { useContext, useEffect, useState } from "react";
-import RecommendedForYouComponent from "../components/RecommendedForYou/RecommendedForYou.component";
 
-import image1 from "../assets/images/about-img2.jpg";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import { Autoplay, Navigation } from "swiper";
+
 import { AllDataContext } from "../context/AllData.context";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import SectionTitleComponent from "../components/Titles/SectionTitle.component";
+import BigCardComponent from "../components/Cards/BigCard.component";
+import LoadingComponent from "../components/Loading.component";
 
 const DestinationPage = () => {
-  const { galleryDatas, countryDatas } = useContext(AllDataContext);
+  const { galleryDatas, countryDatas, tripDatas } = useContext(AllDataContext);
 
   const [toggle, setToggle] = useState(false);
   const [currentId, setCurrentId] = useState(null);
+  const [currentName, setCurrentName] = useState(null);
 
   const loaction = useLocation();
-
-  console.log(countryDatas);
 
   useEffect(() => {
     window.scroll(0, 0);
     setCurrentId(loaction.pathname.split("/")[3]);
+    setCurrentName(loaction.pathname.split("/")[2]);
   }, [loaction]);
-
-  console.log(currentId)
 
   return (
     <div className="destination-page">
       <section>
         <div className="wrapper">
-          <RecommendedForYouComponent />
+          <div className="recommended-for-you">
+            <SectionTitleComponent title="Packages">
+              {currentName} Package Tour
+            </SectionTitleComponent>
+
+            <Swiper
+              slidesPerView={2}
+              spaceBetween={10}
+              speed={1000}
+              autoplay={{
+                delay: 4500,
+                disableOnInteraction: false,
+              }}
+              navigation={true}
+              modules={[Autoplay, Navigation]}
+              breakpoints={{
+                640: {
+                  slidesPerView: 3,
+                  spaceBetween: 10,
+                },
+                768: {
+                  slidesPerView: 4,
+                  spaceBetween: 10,
+                },
+                1024: {
+                  slidesPerView: 5,
+                  spaceBetween: 10,
+                },
+              }}
+              className="mySwiper"
+            >
+              {tripDatas !== null
+                ? tripDatas
+                    .filter(
+                      (data) => data.country.toLowerCase() === currentName
+                    )
+                    .map((tripData, idx) => (
+                      <SwiperSlide key={idx}>
+                        <BigCardComponent key={idx} cardData={tripData} />
+                      </SwiperSlide>
+                    ))
+                : <LoadingComponent />}
+            </Swiper>
+
+            <div className="button-area">
+              <Link to="/all-holiday-packages">
+                <button className="view-all-button">View All</button>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -75,7 +131,7 @@ const DestinationPage = () => {
                             />
                           </div>
                         ))
-                      : "Loading..."}
+                      : <LoadingComponent />}
                   </div>
                 </div>
               )}

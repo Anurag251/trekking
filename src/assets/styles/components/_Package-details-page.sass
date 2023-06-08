@@ -14,6 +14,24 @@
       font-weight: 500
       color: $sec
 
+    .share-package
+      .share-package-title
+        font-size: 18px
+        margin-bottom: 10px
+        font-weight: 500
+        text-align: right
+
+      ul
+        @include flex($justify: flex-end)
+        gap: 10px
+
+        li
+
+          svg
+            height: 30px
+            width: 30px
+            border-radius: 50%
+
   .package-detail
     .PackageGalleryComponent
       width: 65%
@@ -50,6 +68,54 @@
 
       .package-booking-details
         width: 35%
+
+        .booking-form
+          .form-popup-close
+            display: none
+
+        .package-info-mobile
+          position: fixed
+          left: 0
+          bottom: 0
+          z-index: 999
+          height: 60px
+          background-color: $light
+          width: 100%
+          @include flex($justify: space-between)
+          box-shadow: 0 -2px 6px rgba($dark, .1)
+          padding: .5rem 1rem
+          display: none
+
+          .value
+            @include flex($justify: flex-start)
+            flex-wrap: wrap
+            gap: 5px
+            margin-bottom: 0
+            padding-bottom: 0
+
+            button
+              padding: .2rem .4rem !important
+              font-size: 12px
+              margin-bottom: 0
+              border: 1px solid $btn
+              border-radius: 3px
+
+              &.active
+                background-color: $btn
+                color: $light
+
+          .booknow-button
+            @include customButton($bgcolor: $sec, $color: $light)
+
+          .package-info
+            text-align: center
+
+            .title
+              font-size: 10px
+              margin-bottom: 5px
+
+            .package-price-area
+              font-size: 14px
 
         .item
           margin-bottom: 1rem
@@ -246,7 +312,6 @@
               p
                 font-size: 14px
 
-
 @media only screen and ( max-width: 1000px )
   .Package-details-page
     .package-detail
@@ -265,3 +330,99 @@
 
         .package-booking-details
           width: 100%
+
+          .package-info-mobile
+            display: flex
+
+          .package-pricing
+            display: none
+
+          .form-popup-bg
+            position: absolute
+            left: 0
+            top: 0
+            height: 100%
+            width: 100%
+            background-color: rgba($dark, .7)
+            z-index: 1
+
+          .form-area-for-popup
+            height: 100%
+            width: 100%
+            position: fixed
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            z-index: 99
+            @include flex($justify: center)
+            align-items: flex-start
+            padding: 3rem 1rem 0
+            opacity: 0
+            pointer-events: none
+            user-select: none
+            @include trans()
+
+            &.active
+              opacity: 1
+              user-select: auto
+              pointer-events: all
+
+              .booking-form
+                transform: scale(1)
+
+          .booking-form
+            position: relative
+            z-index: 2
+            background-color: $light
+            max-width: 500px
+            transform: scale(1.1)
+            @include trans()
+
+            .form-popup-close
+              position: absolute
+              right: 0
+              top: -30px
+              height: 25px
+              width: 25px
+              background-color: $light
+              @include flex($justify: center)
+              cursor: pointer
+
+              &:hover
+                background-color: #A00000
+                color: $light
+
+@media only screen and ( max-width: 800px )
+  .Package-details-page
+    .title-area
+      flex-direction: column
+      align-items: flex-start
+
+      .share-package
+        margin-top: 1rem
+
+        .share-package-title
+          text-align: left
+
+        ul
+          @include flex($justify: flex-start)
+
+@media only screen and ( max-width: 500px )
+  .Package-details-page
+    .title-area
+      .Package-details-title
+        font-size: 24px
+
+@media only screen and ( max-width: 450px )
+  .Package-details-page
+    .package-detail
+      .package-detail-layout
+        .package-booking-details
+          .package-info-mobile
+            .package-info
+              padding: 0
+              border: none
+
+            .booknow-button
+              font-size: 12px
+              padding: .4rem .8rem

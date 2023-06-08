@@ -4,6 +4,7 @@ import CardComponent from "../Cards/Card.component";
 import SectionTitleComponent from "../Titles/SectionTitle.component";
 import { useContext } from "react";
 import { AllDataContext } from "../../context/AllData.context";
+import LoadingComponent from "../Loading.component";
 
 const RecommendationToursComponent = () => {
   const { tripDatas } = useContext(AllDataContext);
@@ -23,13 +24,16 @@ const RecommendationToursComponent = () => {
         <CardComponent />
         <CardComponent />
         <CardComponent /> */}
-        {tripDatas !== null
-          ?  tripDatas
-          .filter((data, idx) => idx <= 9)
-          .map((tripData, idx) => (
+        {tripDatas !== null ? (
+          tripDatas
+            .filter((data) => data.country === "Nepal")
+            .filter((data, idx) => idx <= 9)
+            .map((tripData, idx) => (
               <BigCardComponent key={idx} cardData={tripData} />
             ))
-          : "Loading..."}
+        ) : (
+          <LoadingComponent />
+        )}
       </div>
 
       <div className="button-area">

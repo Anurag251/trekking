@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import PackageListCardComponent from "../Cards/PackageListCard.component";
 import { AllDataContext } from "../../context/AllData.context";
 import { useLocation } from "react-router-dom";
+import LoadingComponent from "../Loading.component";
 
 const PackagesListComponent = () => {
   const location = useLocation();
@@ -55,7 +56,7 @@ const PackagesListComponent = () => {
           </div>
         </div>
       ) : (
-        "Loading..."
+        <LoadingComponent />
       )}
 
       <div className="packages-list">
@@ -68,7 +69,7 @@ const PackagesListComponent = () => {
                 />
               </div>
             ))
-          : "Loading..."}
+          : <LoadingComponent />}
       </div>
     </div>
   );

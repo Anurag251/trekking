@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import SectionTitleComponent from "../components/Titles/SectionTitle.component";
 import { AllDataContext } from "../context/AllData.context";
 import CardComponent from "../components/Cards/Card.component";
+import LoadingComponent from "../components/Loading.component";
 
 const TopDestinationsPage = () => {
   const { categoriesDatas } = useContext(AllDataContext);
@@ -22,7 +23,7 @@ const TopDestinationsPage = () => {
               ? categoriesDatas.map((categoriesData, idx) => (
                   <CardComponent key={idx} cardData={categoriesData} />
                 ))
-              : "Loading..."}
+              : <LoadingComponent />}
           </div>
         </div>
       </section>

@@ -1,25 +1,33 @@
+import { useContext } from "react";
+import { AllDataContext } from "../../context/AllData.context";
+
 const ContactInfosComponent = () => {
+  const { contactDatas } = useContext(AllDataContext);
+
   return (
     <div className="contact-infos">
       <div className="infos-sec">
         <h3 className="title">MAIN OFFICE:</h3>
-        <p>Raku Complex, Fort Road Leh, 194101, Ladakh, India</p>
+        <p>{contactDatas && contactDatas.branding.address}</p>
 
         <ul>
           <li>
-            Ticket Booking or Enquiry: <span>+91 8491947052 / 8491947053</span>
-          </li>
-
-          <li>
-            Hotel Booking or Enquiry: <span>+91 9858394405 / 8491947044</span>
-          </li>
-          <li>
-            Tour & Trek Booking or Enquiry:
-            <span>+91 8491947039 / 8491947040</span>
+            Tour & Trek Booking or Enquiry:{" "}
+            <span>
+              {" "}
+              <a href={`tel:${contactDatas && contactDatas.branding.phone}`}>
+                {contactDatas && contactDatas.branding.phone}
+              </a>
+            </span>
           </li>
           <li>
             Email:
-            <span> info@overlandescape.com / overland.escape@gmail.com</span>
+            <span>
+              {" "}
+              <a href={`mailto:${contactDatas && contactDatas.branding.email}`}>
+                {contactDatas && contactDatas.branding.email}
+              </a>
+            </span>
           </li>
         </ul>
       </div>

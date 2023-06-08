@@ -2,14 +2,16 @@
 import { useState } from "react";
 
 const PackageDescriptionListComponent = ({ selectedPackage }) => {
-  const [itinerarytoggle, setItineraryToggle] = useState("itineraryToggle1");
-  const [toggle, setToggle] = useState("toggle1");
+  const [toggle, setToggle] = useState("toggle0");
+  const [itinerary, setItinerary] = useState("");
+
+  console.log(selectedPackage && selectedPackage.itenarydetails)
 
   return (
     <div className="package-description-list">
       <div className="list">
-        <div className={`item ${toggle === "toggle1" ? "active" : ""}`}>
-          <div className="title" onClick={() => setToggle("toggle1")}>
+        <div className={`item ${toggle === "toggle0" ? "active" : ""}`}>
+          <div className="title" onClick={() => setToggle("toggle0")}>
             <h4>Overview</h4>
             <i className="fas fa-angle-down arrow-rotate"></i>
           </div>
@@ -22,8 +24,22 @@ const PackageDescriptionListComponent = ({ selectedPackage }) => {
           </div>
         </div>
 
+        <div className={`item active`}>
+          <div className="title">
+            <h4>Highlight</h4>
+            <i className="fas fa-angle-down arrow-rotate"></i>
+          </div>
+          <div className="inner-content">
+            <p
+              dangerouslySetInnerHTML={{
+                __html: selectedPackage && selectedPackage.highlight,
+              }}
+            />
+          </div>
+        </div>
+
         {selectedPackage && selectedPackage.itenarydetails !== null ? (
-          <div className={`item ${toggle === "toggle2" ? "active" : ""}`}>
+          <div className={`item active`}>
             <div className="title" onClick={() => setToggle("toggle2")}>
               <h4>Itinerary</h4>
               <i className="fas fa-angle-down arrow-rotate"></i>
@@ -31,17 +47,9 @@ const PackageDescriptionListComponent = ({ selectedPackage }) => {
             <div className="inner-content">
               <ul className="faq">
                 {selectedPackage.itenarydetails.map((data, idx) => (
-                  <li
-                    key={idx}
-                    className={`${itinerarytoggle === data.id ? "active" : ""}`}
-                  >
-                    <div
-                      className="title"
-                      onClick={() => setItineraryToggle(data.id)}
-                    >
-                      Day {data.day}: {data.trip_title} [{data.altitude}],{" "}
-                      {data.activities}
-                      <i className="fas fa-angle-down"></i>
+                  <li key={idx} className={`${data.trip_title.split(':')[0] === itinerary ? "active" : ""}`} onClick={() => setItinerary(data.trip_title.split(':')[0])}>
+                    <div className="title">
+                      {data.day} {data.trip_title}
                     </div>
 
                     <p

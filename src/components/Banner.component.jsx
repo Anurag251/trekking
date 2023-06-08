@@ -8,6 +8,7 @@ import { Autoplay } from "swiper";
 import bannerImage from "../assets/images/banner.jpg";
 import { useContext } from "react";
 import { AllDataContext } from "../context/AllData.context";
+import LoadingComponent from "./Loading.component";
 
 const BannerComponent = () => {
   const { bannerDatas } = useContext(AllDataContext);
@@ -33,7 +34,7 @@ const BannerComponent = () => {
                   style={{
                     backgroundImage: `url(${
                       bannerData.image !== null
-                        ? bannerData.image.big_image
+                        ? bannerData.image.original_image
                         : ""
                     })`,
                   }}
@@ -42,7 +43,7 @@ const BannerComponent = () => {
                 </div>
               </SwiperSlide>
             ))
-          : "Loading..."}
+          : <LoadingComponent />}
       </Swiper>
     </div>
   );

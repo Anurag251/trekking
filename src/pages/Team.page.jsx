@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react";
 import SectionTitleComponent from "../components/Titles/SectionTitle.component";
 import { AllDataContext } from "../context/AllData.context";
 import TeamsCardComponent from "../components/Cards/TeamsCard.component";
+import LoadingComponent from "../components/Loading.component";
 
 const TeamPage = () => {
   const { teamDatas } = useContext(AllDataContext);
@@ -24,7 +25,7 @@ const TeamPage = () => {
                 ? teamDatas.map((teamData, idx) => (
                     <TeamsCardComponent key={idx} cardData={teamData} />
                   ))
-                : "Loading..."}
+                : <LoadingComponent />}
             </div>
           </div>
         </div>

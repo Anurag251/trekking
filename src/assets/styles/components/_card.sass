@@ -4,6 +4,7 @@
 
 .preview-card
   cursor: pointer
+
   &:hover
     .name
       color: $sec
@@ -81,9 +82,12 @@
     .name
       font-size: 14px
       font-weight: 600
-      max-width: 170px
+      max-width: 160px
       color: $dark
       cursor: pointer
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
 
     .user
       position: absolute
@@ -165,15 +169,101 @@
         font-weight: 600
         color: $pri
 
+:root
+  --level-one: translateZ(2rem)
+  --level-two: translateZ(4rem)
+  --level-three: translateZ(6rem)
+
+  --fw-normal: 400
+  --fw-bold: 700
+
+  --clr: $pri
+
 .teams-card
   text-align: center
+  margin: 0
+
+  .item-image
+    transform: scale(1)
+
+  .card-content
+    text-align: center
+    position: relative
+    padding: 11em 2em
+    transition: 1s
+    // background: pink
+    transform-style: preserve-3d
+
+  &:hover
+    .name
+      color: $dark
+
+    .card-content
+      transform: rotateY(.5turn)
+
+  .card-front,
+  .card-back
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    backface-visibility: hidden
+    transform-style: preserve-3d
+
+  .card-front
+    background-color: $light
+    // background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/308367/fair.jpg)
+    background-size: cover
+    background-blend-mode: overlay
+    color: #333
+
+  .card-back::before
+    content: ''
+    position: absolute
+    --spacer: 1em
+    top: var(--spacer)
+    bottom: var(--spacer)
+    left: var(--spacer)
+    right: var(--spacer)
+    border: 3px solid $sec
+    transform: translateZ(3rem)
+
+  .card__subtitle
+    transform: var(--level-two)
+    text-transform: uppercase
+    letter-spacing: 4px
+    font-size: .75rem
+    font-weight: var(--fw-bold)
+    opacity: .7
+
+  .card__body
+    transform: var(--level-two)
+    font-weight: var(fw-normal)
+    font-size: 1.5rem
+    line-height: 1.6
+
+  .card-back
+    transform: rotateY(.5turn)
+    color: var(--clr)
+    background: #e2e2e2
+    padding-top: 2rem
+
+    .name
+      font-size: 20px
+      margin-bottom: 10px
+      color: $pri
 
   .image-box
-    height: 230px
+    height: 250px
+    transform: var(--level-one)
 
   .name
-    font-size: 15px
+    font-size: 16px
     font-weight: 500
+    transform: var(--level-three)
+    max-width: 170px
+    margin: 0 auto
 
   .desc
     font-size: 12px
@@ -182,6 +272,20 @@
 
   .role
     font-weight: 500
+    transform: var(--level-two)
+    color: rgba($dark, .7)
+
+  .text-email
+    i
+      font-size: 20px
+      margin-bottom: 5px
+
+    p
+      max-width: 150px
+      word-wrap: break-word
+      margin: 0 auto
+
+  a
     color: rgba($dark, .7)
 
 .package-list-card
@@ -289,5 +393,3 @@
 
       .name
         font-size: 12px
-
-

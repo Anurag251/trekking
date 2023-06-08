@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react";
 import CardComponent from "../components/Cards/Card.component";
 import SectionTitleComponent from "../components/Titles/SectionTitle.component";
 import { AllDataContext } from "../context/AllData.context";
+import LoadingComponent from "../components/Loading.component";
 
 const BlogPage = () => {
   const { blogDatas } = useContext(AllDataContext);
@@ -24,7 +25,7 @@ const BlogPage = () => {
                 ? blogDatas.map((blogData, idx) => (
                     <CardComponent key={idx} cardData={blogData} blogCard />
                   ))
-                : "Loading..."}
+                : <LoadingComponent />}
             </div>
           </div>
         </div>

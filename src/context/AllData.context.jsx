@@ -14,6 +14,8 @@ export const AllDataProvider = ({ children }) => {
   const [countryDatas, setCountryDatas] = useState(null);
   const [categoriesDatas, setCategoriesDatas] = useState(null);
   const [galleryDatas, setGalleryDatas] = useState(null);
+  const [quickLinkDatas, setQuickLinkDatas] = useState(null);
+  const [contactDatas, setContactDatas] = useState(null);
   const [aboutDetails, setAboutDetails] = useState(null);
   const [sideNavHidden, setSideNavHidden] = useState(false);
   const [filterPackage, setFilterPackage] = useState(false);
@@ -170,6 +172,32 @@ export const AllDataProvider = ({ children }) => {
       .catch((err) => {
         console.log(err);
       });
+
+    apis
+      .get("/quicklink")
+      .then((res) => {
+        if (res.status === 200) {
+          setQuickLinkDatas(res.data.data);
+          // console.log("review: ");
+          // console.log(res.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    apis
+      .get("/settings")
+      .then((res) => {
+        if (res.status === 200) {
+          setContactDatas(res.data.data);
+          // console.log("review: ");
+          // console.log(res.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
@@ -203,6 +231,10 @@ export const AllDataProvider = ({ children }) => {
         setSideNavHidden,
         filterPackage,
         setFilterPackage,
+        quickLinkDatas,
+        setQuickLinkDatas,
+        contactDatas,
+        setContactDatas,
       }}
     >
       {children}

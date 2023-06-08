@@ -170,7 +170,7 @@ section
 
   .our-teams
     .teams-list
-      @include grid($columns: repeat(5, 1fr))
+      @include grid($columns: repeat(4, 1fr))
 
   .you-might-also-like
     .like-list
@@ -185,7 +185,7 @@ section
 
   .our-teams
     .teams-list
-      @include grid($columns: repeat(4, 1fr))
+      @include grid($columns: repeat(3, 1fr))
 
   .you-might-also-like
     .like-list
@@ -200,7 +200,7 @@ section
 
   .our-teams
     .teams-list
-      @include grid($columns: repeat(3, 1fr))
+      @include grid($columns: repeat(2, 1fr))
 
   .you-might-also-like
     .like-list
@@ -209,10 +209,6 @@ section
 @media only screen and (max-width: 550px)
   .all-package-list
     @include grid($columns: repeat(2, 1fr))
-
-  .our-teams
-    .teams-list
-      @include grid($columns: repeat(2, 1fr))
 
 @media only screen and (max-width: 500px)
   .sec-title
@@ -225,6 +221,10 @@ section
 
   .you-might-also-like
     .like-list
+      @include grid($columns: repeat(1, 1fr))
+
+  .our-teams
+    .teams-list
       @include grid($columns: repeat(1, 1fr))
 
 @media only screen and (max-width: 370px)

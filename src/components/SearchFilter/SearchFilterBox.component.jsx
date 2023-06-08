@@ -7,6 +7,7 @@ import {
 import { AllDataContext } from "../../context/AllData.context";
 import { apis } from "../../utils/apis";
 import { useNavigate } from "react-router-dom";
+import LoadingComponent from "../Loading.component";
 
 const SearchFilterBoxComponent = () => {
   const { countryDatas } = useContext(AllDataContext);
@@ -81,7 +82,7 @@ const SearchFilterBoxComponent = () => {
                       {countryData.country_name}
                     </option>
                   ))
-                : "Loading..."}
+                : <LoadingComponent />}
             </select>
           </div>
 

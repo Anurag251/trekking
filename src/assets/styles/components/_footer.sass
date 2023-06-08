@@ -42,6 +42,7 @@ footer
 
       .social-links
         @include flex($justify: flex-start)
+        flex-wrap: wrap
         gap: 10px
         margin-top: .5rem
 
@@ -60,7 +61,7 @@ footer
         .logo-image-list
           @include flex($justify: flex-start)
           gap: 10px
-          margin: 1rem 0
+          margin: 1rem 0 2rem
 
           img
             width: 50px
@@ -73,6 +74,10 @@ footer
             color: $light
             margin-bottom: 15px
             font-size: 14px
+            cursor: pointer
+            color: rgba($light, .8)
+            &:hover
+              color: rgba($light, 1)
 
             a
               color: rgba($light, .8)

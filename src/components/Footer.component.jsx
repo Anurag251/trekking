@@ -3,9 +3,14 @@ import NTB from "../assets/images/NTB Logo.jpeg";
 import TAAN from "../assets/images/TAAN.png";
 import NMA from "../assets/images/NMA_new.jpeg";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { AllDataContext } from "../context/AllData.context";
 
 const FooterComponent = () => {
+  const { categoriesDatas, contactDatas } = useContext(AllDataContext);
+  const navigate = useNavigate();
+
   return (
     <footer>
       <div className="wrapper">
@@ -23,21 +28,74 @@ const FooterComponent = () => {
             <h5>Connect with Us:</h5>
 
             <div className="social-links">
-              <button className="icom">
-                <i className="fab fa-facebook-f"></i>
-              </button>
+              {contactDatas && contactDatas.social_media.fb_url !== null ? (
+                <a href={contactDatas.social_media.fb_url}>
+                  <button className="icom">
+                    <i className="fab fa-facebook-f"></i>
+                  </button>
+                </a>
+              ) : null}
 
-              <button className="icom">
-                <i className="fab fa-instagram"></i>
-              </button>
+              {contactDatas && contactDatas.social_media.google_url !== null ? (
+                <a href={contactDatas.social_media.google_url}>
+                  <button className="icom">
+                    <i className="fab fa-google"></i>
+                  </button>
+                </a>
+              ) : null}
 
-              <button className="icom">
-                <i className="fab fa-twitter"></i>
-              </button>
+              {contactDatas &&
+              contactDatas.social_media.instagram_url !== null ? (
+                <a href={contactDatas.social_media.instagram_url}>
+                  <button className="icom">
+                    <i className="fab fa-instagram"></i>
+                  </button>
+                </a>
+              ) : null}
 
-              <button className="icom">
-                <i className="fab fa-linkedin"></i>
-              </button>
+              {contactDatas &&
+              contactDatas.social_media.linkedin_url !== null ? (
+                <a href={contactDatas.social_media.linkedin_url}>
+                  <button className="icom">
+                    <i className="fab fa-linkedin"></i>
+                  </button>
+                </a>
+              ) : null}
+
+              {contactDatas && contactDatas.social_media.fb_url !== null ? (
+                <a href={contactDatas.social_media.fb_url}>
+                  <button className="icom">
+                    <i className="fab fa-facebook-f"></i>
+                  </button>
+                </a>
+              ) : null}
+
+              {contactDatas &&
+              contactDatas.social_media.pinterest_url !== null ? (
+                <a href={contactDatas.social_media.pinterest_url}>
+                  <button className="icom">
+                    <i className="fab fa-pinterest"></i>
+                  </button>
+                </a>
+              ) : null}
+
+              {contactDatas &&
+              contactDatas.social_media.twitter_url !== null ? (
+                <a href={contactDatas.social_media.twitter_url}>
+                  <button className="icom">
+                    <i className="fab fa-twitter"></i>
+                  </button>
+                </a>
+              ) : null}
+
+              {contactDatas &&
+              contactDatas.social_media.youtube_url !== null ? (
+                <a href={contactDatas.social_media.youtube_url}>
+                  <button className="icom">
+                    <i className="fab fa-youtube"></i>
+                  </button>
+                </a>
+              ) : null}
             </div>
           </div>
 
@@ -45,24 +103,23 @@ const FooterComponent = () => {
             <h4 className="footer-title">Our Activities</h4>
 
             <ul className="footer-activities-list">
-              <li>
-                <Link to="/packages">Holidays Package</Link>
-              </li>
-              <li>
-                <Link to="/packages">Trekking & Adventure</Link>
-              </li>
-              <li>
-                <Link to="/packages">Peak Climbing</Link>
-              </li>
-              <li>
-                <Link to="/packages">8000M Expedition</Link>
-              </li>
-              <li>
-                <Link to="/packages">White Water Rafting</Link>
-              </li>
-              <li>
-                <Link to="/packages">Top trending adventure</Link>
-              </li>
+              {categoriesDatas &&
+                categoriesDatas.map((data, idx) => (
+                  <li key={idx}>
+                    <div
+                      className=""
+                      onClick={() => {
+                        navigate(`/packages/${data.id}`, {
+                          state: {
+                            cateData: data,
+                          },
+                        });
+                      }}
+                    >
+                      {data.category_name}
+                    </div>
+                  </li>
+                ))}
             </ul>
           </div>
 
@@ -94,17 +151,23 @@ const FooterComponent = () => {
             <ul className="footer-contact-list">
               <li>
                 <i className="fas fa-map-marker-alt"></i>
-                Suryadarshan Height, Tokha Municipality 44600 Kathmandu, Nepal.
+                {contactDatas && contactDatas.branding.address}
               </li>
 
               <li>
                 <i className="fas fa-phone"></i>
-                +977-1-5158446 | 9841809067
+                <a href={`tel:${contactDatas && contactDatas.branding.phone}`}>
+                  {contactDatas && contactDatas.branding.phone}
+                </a>
               </li>
 
               <li>
                 <i className="fas fa-envelope"></i>
-                info@mountaingotrekking.com mountaingotrekking@gmail.com
+                <a
+                  href={`mailto:${contactDatas && contactDatas.branding.email}`}
+                >
+                  {contactDatas && contactDatas.branding.email}
+                </a>
               </li>
             </ul>
           </div>

@@ -7,6 +7,7 @@ const PackageBookingDetails = ({ selectedPackage }) => {
   const { setMessage } = useContext(AllDataContext);
   const [choosenPrice, setChoosenPrice] = useState(null);
   const [buttonLoading, setButtonLoading] = useState(false);
+  const [formPopup, setformPopup] = useState(false);
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
@@ -78,14 +79,45 @@ const PackageBookingDetails = ({ selectedPackage }) => {
     }
   }, [selectedPackage]);
 
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+
   return (
     <div className="package-booking-details">
-      <div className="item">
+      <div className="package-info-mobile">
+        <div className="value">
+          {selectedPackage !== null
+            ? selectedPackage.price.map((price, idx) => (
+                <button
+                  className={`${price.value === choosenPrice ? "active" : ""}`}
+                  key={idx}
+                  onClick={() => {
+                    setChoosenPrice(price.value);
+                  }}
+                >
+                  {price.label}
+                </button>
+              ))
+            : null}
+        </div>
+
+        <div className="package-info">
+          <div className="title">Cost Per Person</div>
+          <div className="package-price-area">US$ {choosenPrice}</div>
+        </div>
+
+        <button
+          className="booknow-button"
+          onClick={() => setformPopup(!formPopup)}
+        >
+          Book Now
+        </button>
+      </div>
+
+      <div className="item package-pricing">
         <div className="package-head">
           <div className="title">Trip Date</div>
-          <div className="value">
-            {selectedPackage !== null ? selectedPackage.tripyear : ""}
-          </div>
+          <div className="value">{currentYear}</div>
         </div>
 
         <div className="package-info">
@@ -110,7 +142,7 @@ const PackageBookingDetails = ({ selectedPackage }) => {
         </div>
 
         <div className="package-info">
-          <div className="title">Cost Per Person/</div>
+          <div className="title">Cost Per Person</div>
           <div className="package-price-area">US$ {choosenPrice}</div>
         </div>
 
@@ -175,159 +207,170 @@ const PackageBookingDetails = ({ selectedPackage }) => {
         <p className="info">Note: More than 6 persons please contact us.</p>
       </div>
 
-      <div className="item booking-form">
-        <div className="package-head">Booking Form</div>
+      <div className={`form-area-for-popup ${formPopup ? "active" : ""}`}>
+        <div
+          className="form-popup-bg"
+          onClick={() => setformPopup(false)}
+        ></div>
 
-        <form onSubmit={handleSubmit}>
-          <div className="from-area">
-            <div className="form-input-group">
-              <div className="package-info">
-                <label htmlFor="inputName" className="form-label">
-                  Name
-                </label>
-                <input
-                  className="form-input"
-                  id="inputName"
-                  type="text"
-                  onChange={(e) =>
-                    setFormValues({ ...formValues, name: e.target.value })
-                  }
-                  name="name"
-                  value={formValues.name}
-                />
-              </div>
-
-              <div className="package-info">
-                <label htmlFor="inputPhone" className="form-label">
-                  Phone <span>(optional)</span>
-                </label>
-                <input
-                  className="form-input"
-                  id="inputPhone"
-                  type="text"
-                  onChange={(e) =>
-                    setFormValues({ ...formValues, phone: e.target.value })
-                  }
-                  name="phone"
-                  value={formValues.phone}
-                />
-              </div>
-            </div>
-
-            <div className="form-input-group">
-              <div className="package-info">
-                <label htmlFor="inputEmail" className="form-label">
-                  E-mail
-                </label>
-                <input
-                  className="form-input"
-                  id="inputEmail"
-                  type="text"
-                  onChange={(e) =>
-                    setFormValues({ ...formValues, email: e.target.value })
-                  }
-                  name="email"
-                  value={formValues.email}
-                />
-              </div>
-
-              <div className="package-info">
-                <label htmlFor="inputDestination" className="form-label">
-                  Destination
-                </label>
-                <input
-                  className="form-input"
-                  id="inputDestination"
-                  type="text"
-                  onChange={(e) =>
-                    setFormValues({
-                      ...formValues,
-                      destination: e.target.value,
-                    })
-                  }
-                  name="destination"
-                  value={formValues.destination}
-                />
-              </div>
-            </div>
-
-            <div className="form-input-group">
-              <div className="package-info">
-                <label htmlFor="inputDateOfTravel" className="form-label">
-                  Date of Travel
-                </label>
-                <input
-                  className="form-input"
-                  id="inputDateOfTravel"
-                  type="text"
-                  onChange={(e) =>
-                    setFormValues({
-                      ...formValues,
-                      dateOfTravel: e.target.value,
-                    })
-                  }
-                  name="dateOfTravel"
-                  value={formValues.dateOfTravel}
-                />
-              </div>
-
-              <div className="package-info">
-                <label htmlFor="inputNoOfDays" className="form-label">
-                  No of Days
-                </label>
-                <input
-                  className="form-input"
-                  id="inputNoOfDays"
-                  type="text"
-                  onChange={(e) =>
-                    setFormValues({ ...formValues, noOfDays: e.target.value })
-                  }
-                  name="noOfDays"
-                  value={formValues.noOfDays}
-                />
-              </div>
-            </div>
-
-            <div className="package-info">
-              <label htmlFor="inputNoOfPerson" className="form-label">
-                No of Person
-              </label>
-              <input
-                className="form-input"
-                id="inputNoOfPerson"
-                type="text"
-                onChange={(e) =>
-                  setFormValues({ ...formValues, noOfPerson: e.target.value })
-                }
-                name="noOfPerson"
-                value={formValues.noOfPerson}
-              />
-            </div>
-
-            <div className="package-info">
-              <label htmlFor="inputCommentRemarks" className="form-label">
-                Comment/Remarks <span>(optional)</span>
-              </label>
-              <textarea
-                className="form-input"
-                id="inputCommentRemarks"
-                cols="50"
-                rows="3"
-                onChange={(e) =>
-                  setFormValues({ ...formValues, comment: e.target.value })
-                }
-                name="comment"
-                value={formValues.comment}
-              ></textarea>
-            </div>
-
-            <div className="book-now-button">
-              <button className={`submit ${buttonLoading ? "active" : ""}`}>
-                Submit
-              </button>
-            </div>
+        <div className="item booking-form">
+          <div className="form-popup-close" onClick={() => setformPopup(false)}>
+            <i className="fas fa-times"></i>
           </div>
-        </form>
+
+          <div className="package-head">Booking Form</div>
+
+          <form onSubmit={handleSubmit}>
+            <div className="from-area">
+              <div className="form-input-group">
+                <div className="package-info">
+                  <label htmlFor="inputName" className="form-label">
+                    Name
+                  </label>
+                  <input
+                    className="form-input"
+                    id="inputName"
+                    type="text"
+                    onChange={(e) =>
+                      setFormValues({ ...formValues, name: e.target.value })
+                    }
+                    name="name"
+                    value={formValues.name}
+                  />
+                </div>
+
+                <div className="package-info">
+                  <label htmlFor="inputPhone" className="form-label">
+                    Phone <span>(optional)</span>
+                  </label>
+                  <input
+                    className="form-input"
+                    id="inputPhone"
+                    type="text"
+                    onChange={(e) =>
+                      setFormValues({ ...formValues, phone: e.target.value })
+                    }
+                    name="phone"
+                    value={formValues.phone}
+                  />
+                </div>
+              </div>
+
+              <div className="form-input-group">
+                <div className="package-info">
+                  <label htmlFor="inputEmail" className="form-label">
+                    E-mail
+                  </label>
+                  <input
+                    className="form-input"
+                    id="inputEmail"
+                    type="text"
+                    onChange={(e) =>
+                      setFormValues({ ...formValues, email: e.target.value })
+                    }
+                    name="email"
+                    value={formValues.email}
+                  />
+                </div>
+
+                <div className="package-info">
+                  <label htmlFor="inputDestination" className="form-label">
+                    Destination
+                  </label>
+                  <input
+                    className="form-input"
+                    id="inputDestination"
+                    type="text"
+                    onChange={(e) =>
+                      setFormValues({
+                        ...formValues,
+                        destination: e.target.value,
+                      })
+                    }
+                    name="destination"
+                    value={formValues.destination}
+                  />
+                </div>
+              </div>
+
+              <div className="form-input-group">
+                <div className="package-info">
+                  <label htmlFor="inputDateOfTravel" className="form-label">
+                    Date of Travel
+                  </label>
+                  <input
+                    className="form-input"
+                    id="inputDateOfTravel"
+                    type="text"
+                    onChange={(e) =>
+                      setFormValues({
+                        ...formValues,
+                        dateOfTravel: e.target.value,
+                      })
+                    }
+                    name="dateOfTravel"
+                    value={formValues.dateOfTravel}
+                  />
+                </div>
+
+                <div className="package-info">
+                  <label htmlFor="inputNoOfDays" className="form-label">
+                    No of Days
+                  </label>
+                  <input
+                    className="form-input"
+                    id="inputNoOfDays"
+                    type="text"
+                    onChange={(e) =>
+                      setFormValues({ ...formValues, noOfDays: e.target.value })
+                    }
+                    name="noOfDays"
+                    value={formValues.noOfDays}
+                  />
+                </div>
+              </div>
+
+              <div className="package-info">
+                <label htmlFor="inputNoOfPerson" className="form-label">
+                  No of Person
+                </label>
+                <input
+                  className="form-input"
+                  id="inputNoOfPerson"
+                  type="text"
+                  onChange={(e) =>
+                    setFormValues({ ...formValues, noOfPerson: e.target.value })
+                  }
+                  name="noOfPerson"
+                  value={formValues.noOfPerson}
+                />
+              </div>
+
+              <div className="package-info">
+                <label htmlFor="inputCommentRemarks" className="form-label">
+                  Comment/Remarks <span>(optional)</span>
+                </label>
+                <textarea
+                  className="form-input"
+                  id="inputCommentRemarks"
+                  cols="50"
+                  rows="3"
+                  onChange={(e) =>
+                    setFormValues({ ...formValues, comment: e.target.value })
+                  }
+                  name="comment"
+                  value={formValues.comment}
+                ></textarea>
+              </div>
+
+              <div className="book-now-button">
+                <button className={`submit ${buttonLoading ? "active" : ""}`}>
+                  Submit
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
 
       {/*  <div className="item">

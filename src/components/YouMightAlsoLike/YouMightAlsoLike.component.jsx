@@ -2,6 +2,7 @@ import { useContext } from "react";
 import BigCardComponent from "../Cards/BigCard.component";
 import SectionTitleComponent from "../Titles/SectionTitle.component";
 import { AllDataContext } from "../../context/AllData.context";
+import LoadingComponent from "../Loading.component";
 
 const YouMightAlsoLikeComponent = () => {
   const { tripDatas } = useContext(AllDataContext);
@@ -19,7 +20,7 @@ const YouMightAlsoLikeComponent = () => {
           .map((tripData, idx) => (
               <BigCardComponent key={idx} cardData={tripData} />
             ))
-          : "Loading..."}
+          : <LoadingComponent />}
       </div>
     </div>
   );

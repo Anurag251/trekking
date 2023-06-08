@@ -1,20 +1,30 @@
+import { useContext } from "react";
+import { AllDataContext } from "../../context/AllData.context";
+
 const HeaderTopComponent = () => {
+  const { contactDatas } = useContext(AllDataContext);
   return (
     <div className="header-top">
       <div className="wrapper">
         <ul>
           <li>
-            <i className="fas fa-phone"></i> +977-1-5158446 | 9841809067
+            <i className="fas fa-phone"></i>
+            <a href={`tel:${contactDatas && contactDatas.branding.phone}`}>
+              {contactDatas && contactDatas.branding.phone}
+            </a>
           </li>
           <li>
-            <i className="fas fa-envelope"></i> info@mountaingotrekking.com
+            <i className="fas fa-envelope"></i>{" "}
+            <a href={`mailto:${contactDatas && contactDatas.branding.email}`}>
+              {contactDatas && contactDatas.branding.email}
+            </a>
           </li>
           {/* <li>
             Select Language <i className="fas fa-angle-down"></i>
           </li> */}
-          <li>
+       {/*    <li>
             <div id="google_translate_element"></div>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>

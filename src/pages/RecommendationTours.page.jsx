@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react";
 import SectionTitleComponent from "../components/Titles/SectionTitle.component";
 import BigCardComponent from "../components/Cards/BigCard.component";
 import { AllDataContext } from "../context/AllData.context";
+import LoadingComponent from "../components/Loading.component";
 
 const RecommendationToursPage = () => {
   const { tripDatas } = useContext(AllDataContext);
@@ -21,10 +22,12 @@ const RecommendationToursPage = () => {
 
             <div className="tours-list">
               {tripDatas !== null
-                ? tripDatas.map((tripData, idx) => (
-                    <BigCardComponent key={idx} cardData={tripData} />
-                  ))
-                : "Loading..."}
+                ? tripDatas
+                    .filter((data) => data.country === "Nepal")
+                    .map((tripData, idx) => (
+                      <BigCardComponent key={idx} cardData={tripData} />
+                    ))
+                : <LoadingComponent />}
             </div>
           </div>
         </div>

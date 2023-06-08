@@ -12,6 +12,7 @@ import SectionTitleComponent from "../Titles/SectionTitle.component";
 import { AllDataContext } from "../../context/AllData.context";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import LoadingComponent from "../Loading.component";
 
 const OurTeamsComponent = () => {
   const { teamDatas } = useContext(AllDataContext);
@@ -32,25 +33,21 @@ const OurTeamsComponent = () => {
       </div> */}
 
       <Swiper
-        slidesPerView={2}
+        slidesPerView={1}
         speed={1000}
-        autoplay={{
-          delay: 4500,
-          disableOnInteraction: false,
-        }}
         navigation={true}
         modules={[Autoplay, Navigation]}
         breakpoints={{
           640: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 20,
           },
           768: {
-            slidesPerView: 4,
+            slidesPerView: 3,
             spaceBetween: 20,
           },
           1024: {
-            slidesPerView: 5,
+            slidesPerView: 4,
             spaceBetween: 20,
           },
         }}
@@ -63,7 +60,7 @@ const OurTeamsComponent = () => {
                 <TeamsCardComponent cardData={teamData} />
               </SwiperSlide>
             ))
-          : "Loading..."}
+          : <LoadingComponent />}
       </Swiper>
 
       <div className="button-area">
