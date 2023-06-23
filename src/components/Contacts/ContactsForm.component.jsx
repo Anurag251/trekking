@@ -35,7 +35,12 @@ const ContactsFormComponent = () => {
           // console.log(res);
           if (res.status === 200) {
             setButtonLoading(false);
-            setMessage("Your message is sent");
+            setMessage({
+              message: true,
+              title: "Thank You",
+              type: "success",
+              desc: "Your message is sent",
+            });
             setFormValues({
               ...formValues,
               name: "",
@@ -46,7 +51,12 @@ const ContactsFormComponent = () => {
             });
           } else {
             setButtonLoading(false);
-            setMessage("Something went wrong");
+            setMessage({
+              message: true,
+              title: "Failed",
+              type: "error",
+              desc: "Something went wrong",
+            });
           }
         })
         .catch((err) => {

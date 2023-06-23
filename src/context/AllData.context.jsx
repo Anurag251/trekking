@@ -21,7 +21,12 @@ export const AllDataProvider = ({ children }) => {
   const [filterPackage, setFilterPackage] = useState(false);
 
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState({
+    message: false,
+    title: "",
+    type: "",
+    desc: "",
+  });
 
   const [selectedCate, setSelectedCate] = useState(null);
 

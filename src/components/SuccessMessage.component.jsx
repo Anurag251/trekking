@@ -5,18 +5,40 @@ import { AllDataContext } from "../context/AllData.context";
 const SuccessMessageComponent = () => {
   const { message, setMessage } = useContext(AllDataContext);
   return (
-    <div className={`success-message ${message !== "" ? "active" : ""}`}>
-      <div className="message-box">
+    <div className={`popup-message ${message.message ? "active" : ""}`}>
+      <div
+        className={`message-bg`}
+        onClick={() => {
+          setMessage({
+            message: false,
+            title: "",
+            type: "",
+            desc: "",
+          });
+        }}
+      ></div>
+      <div className={`box ${message.type === "error" ? "error" : ""}`}>
         <div className="message-icon">
-          <i className="fas fa-check"></i>
+          {message.type === "success" ? (
+            <i className="fas fa-check"></i>
+          ) : (
+            <i className="fas fa-times"></i>
+          )}
         </div>
-
-        <div className="message-title">Thank you!!!</div>
-
-        <div className="message-content">{message}</div>
-
-        <button className="message-close-button" onClick={() => setMessage("")}>
-          Close
+        <div className="message-title">{message.title}</div>
+        <p>{message.desc}</p>
+        <button
+          className="message-button"
+          onClick={() => {
+            setMessage({
+              message: false,
+              title: "",
+              type: "",
+              desc: "",
+            });
+          }}
+        >
+          {message.type === "success" ? "Continue" : "Try Again"}
         </button>
       </div>
     </div>

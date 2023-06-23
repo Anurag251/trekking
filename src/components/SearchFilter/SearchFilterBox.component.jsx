@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import LoadingComponent from "../Loading.component";
 
 const SearchFilterBoxComponent = () => {
-  const { countryDatas } = useContext(AllDataContext);
+  const { countryDatas, setMessage } = useContext(AllDataContext);
   const [buttonLoading, setButtonLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -44,6 +44,13 @@ const SearchFilterBoxComponent = () => {
                 state: {
                   searchedData: res.data.data,
                 },
+              });
+            } else {
+              setMessage({
+                message: true,
+                title: "Please Try Another",
+                type: "error",
+                desc: `No Package Found for ${formValues.duration}`,
               });
             }
           }

@@ -47,7 +47,12 @@ const PackageBookingDetails = ({ selectedPackage }) => {
           // console.log(res);
           if (res.status === 200) {
             setButtonLoading(false);
-            setMessage("Your Package is booked");
+            setMessage({
+              message: true,
+              title: "Thank You!!",
+              type: "success",
+              desc: "Your Package is booked",
+            });
             setFormValues({
               ...formValues,
               name: "",
@@ -60,7 +65,12 @@ const PackageBookingDetails = ({ selectedPackage }) => {
               comment: "",
             });
           } else {
-            setMessage("Something went wrong");
+            setMessage({
+              message: true,
+              title: "Failed",
+              type: "error",
+              desc: "Something went wrong",
+            });
           }
         })
         .catch((err) => {
